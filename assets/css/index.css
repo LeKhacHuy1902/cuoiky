@@ -1,0 +1,272 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #ffa500;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header ul li {
+    margin: 0 10px;
+}
+
+header ul li img {
+    height: 50px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: background 0.3s;
+}
+
+header ul li a:hover {
+    background-color: #ff8000;
+    border-radius: 5px;
+}
+
+/* Banner */
+.banner {
+    background: url('../img-index/banner.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.banner h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.banner a {
+    background-color: #ffa500;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.banner a:hover {
+    background-color: #ff8000;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.about h2 {
+    color: #ffa500;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.about p {
+    color: #ddd;
+    font-size: 1.1rem;
+}
+
+/* Standard Section */
+.tieu-chuan {
+    background-color: #2a2a2a;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tieu-chuan h1 {
+    color: #ffa500;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.tieu-chuan p {
+    color: #ccc;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.tieu-chuan ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tieu-chuan ul li {
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+/* Service Section */
+.danh-sach-dich-vu h1 {
+    text-align: center;
+    color: #ffa500;
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.danh-sach-dich-vu p {
+    text-align: center;
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.danh-sach-dich-vu ul {
+    margin: 20px;
+    padding: 0;
+    list-style: none;
+    color: #ddd;
+}
+
+.danh-sach-dich-vu h2 {
+    color: #ffa500;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.danh-sach-dich-vu li {
+    margin-bottom: 15px;
+}
+
+/* Commitment Section */
+.cam-ket {
+    background-color: #1f1f1f;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cam-ket h1 {
+    color: #ffa500;
+    margin-bottom: 15px;
+}
+
+.cam-ket ul {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0;
+    list-style: none;
+    color: #ddd;
+}
+
+/* Testimonials */
+.testimonials {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.testimonials h2 {
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.testimonial-item {
+    background-color: #2a2a2a;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 700px;
+}
+
+.testimonial-item p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.testimonial-item h4 {
+    margin-top: 15px;
+    color: #ffa500;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+.footer-social a img{
+    width: 50px;
+}
+/* Floating Buttons */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.floating-buttons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffa500;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.floating-buttons a:hover {
+    background-color: #ff8000;
+}
+
+.floating-buttons img {
+    width: 20px;
+    height: 20px;
+}

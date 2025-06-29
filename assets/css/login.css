@@ -1,0 +1,120 @@
+/* Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1b1b1b, #333, #555);
+    color: #fff;
+}
+
+/* Container */
+.login-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    width: 90%;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Banner Section */
+.login-banner {
+    flex: 1;
+    background: url('../img-login/sport-car.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.login-banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-banner p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Form Section */
+.login-form {
+    flex: 1;
+    padding: 40px 30px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #f8a51d;
+}
+
+.login-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+}
+
+.login-form input:focus {
+    border: 2px solid #f8a51d;
+}
+
+.login-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #f8a51d, #f36d00);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #f36d00, #f8a51d);
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.5);
+}
+
+.login-options {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-options a {
+    color: #f8a51d;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-options a:hover {
+    color: #f36d00;
+}

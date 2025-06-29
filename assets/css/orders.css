@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 {
+    color: #ffa500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 20px auto;
+}
+
+table th, table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background: #333;
+    color: #ffa500;
+    text-transform: uppercase;
+}
+
+button {
+    background: #ffa500;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ff8000;
+}
+
+.cancel-btn {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background: #e60000;
+}
