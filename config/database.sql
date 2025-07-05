@@ -6,10 +6,10 @@ USE cuoiky;
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
+    username VARCHAR(500) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    full_name VARCHAR(100),
+    email VARCHAR(500) NOT NULL UNIQUE,
+    full_name VARCHAR(500),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     role ENUM('user', 'admin') DEFAULT 'user'
 );
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS users (
 -- Services table
 CREATE TABLE IF NOT EXISTS services (   
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name_services VARCHAR(100) NOT NULL,
+    name_services VARCHAR(500) NOT NULL,
     description TEXT,
     price DECIMAL(10,2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -27,35 +27,37 @@ CREATE TABLE IF NOT EXISTS services (
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    user_username VARCHAR(50) NOT NULL,
-    service_id INT NOT NULL,
-    booking_date DATE NOT NULL,
-    status VARCHAR(50) DEFAULT 'pending',
+    bookings_date DATE NOT NULL,
+    status VARCHAR(500) DEFAULT 'ĐANG CHỜ XỬ LÝ',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_price DECIMAL(10,2) NOT NULL,
+    note TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Insert sample data into services table
-CREATE TABLE booking_services (
-    booking_id INT,
-    service_id INT,
+-- Bookings_Services table (many-to-many relationship)
+CREATE TABLE IF NOT EXISTS bookings_services (
+    bookings_id INT,
+    services_id INT,
     services_price DECIMAL(10, 2) NOT NULL,
-    PRIMARY KEY (booking_id, service_id),
-    FOREIGN KEY (booking_id) REFERENCES booking(id) ON DELETE CASCADE,
-    FOREIGN KEY (service_id) REFERENCES services(id)
-    
-);
-
+    PRIMARY KEY (bookings_id, services_id),
+    FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE,
+    FOREIGN KEY (services_id) REFERENCES services(id)
+)
 
 -- Orders table
 CREATE TABLE IF NOT EXISTS orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    service_id INT NOT NULL,
-    order_date DATE NOT NULL,
-    status VARCHAR(50) DEFAULT 'pending',
-    total DECIMAL(10,2) NOT NULL,
+    bookings_id INT NOT NULL,
+    status VARCHAR(500) DEFAULT 'ĐANG CHỜ XỬ LÝ',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_price DECIMAL(10,2) NOT NULL,
+    note TEXT,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (service_id) REFERENCES services(id)
+    FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE
 );
+
+
+
+
