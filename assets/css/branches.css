@@ -1,9 +1,10 @@
+/* branches.css */
 *{
     margin: 0;
     padding: 0;
 }
 body{
-    padding-top: 80px;
+    padding-top: 80px; /* Keep this if you have a fixed header */
     font-family: 'Patua One', serif;
 }
 /* header */
@@ -44,78 +45,7 @@ header nav ul li a:hover {
     color: #ffcc00;
 }
 
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.footer-info, .footer-social, .newsletter {
-    flex: 1;
-    min-width: 280px;
-}
-
-footer h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-footer p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 10px;
-}
-
-.footer-info i {
-    margin-right: 10px;
-}
-
-.footer-social a img {
-    width: 40px;
-    margin: 0 10px;
-    transition: transform 0.3s ease;
-}
-
-.footer-social a img:hover {
-    transform: scale(1.1);
-}
-
-.newsletter input[type="email"] {
-    width: 70%;
-    padding: 10px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.newsletter button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.newsletter button:hover {
-    background-color: #0056b3;
-}
-
-
+/* ... rest of your branches.css ... */
 
 /* Floating Buttons */
 .floating-buttons {

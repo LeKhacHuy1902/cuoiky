@@ -1,4 +1,4 @@
-/* Reset */
+/* General Resets and Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,237 +8,251 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #1a1a1a;
-    color: #fff;
+    color: #fff; /* Default text color */
+    background-color: #1a1a1a; /* Dark background for the body */
 }
 
 .container {
-    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Header */
+a {
+    color: #ffd700; /* Orange-gold color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header Styles */
 header {
-    background-color: #ffa500;
+    background-color: #333; /* Slightly lighter dark for header */
+    color: #fff;
     padding: 15px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header ul {
     list-style: none;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; /* Align items vertically in the nav */
+    flex-grow: 1; /* Allow ul to take available space */
+    justify-content: flex-end; /* Push nav items to the right */
 }
 
 header ul li {
-    margin: 0 10px;
+    margin-left: 25px; /* Spacing between nav items */
 }
 
-header ul li img {
-    height: 50px;
+header ul li:first-child {
+    margin-left: 0; /* No left margin for the logo li */
+    margin-right: auto; /* Push logo to the left, and other items to the right */
 }
+
 
 header ul li a {
-    text-decoration: none;
     color: #fff;
     font-weight: bold;
-    padding: 8px 15px;
-    transition: background 0.3s;
+    padding: 5px 0;
+    transition: color 0.3s ease;
 }
 
 header ul li a:hover {
-    background-color: #ff8000;
-    border-radius: 5px;
+    color: #ffd700; /* Orange-gold on hover */
+    text-decoration: none;
 }
 
-/* Banner */
+header img {
+    height: 40px; /* Adjust logo size */
+    vertical-align: middle;
+}
+
+/* Banner Section */
 .banner {
-    background: url('../img-index/banner.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    background-color: #222; /* Darker background for banner */
     text-align: center;
+    padding: 100px 0;
+    min-height: 500px; /* Ensure a decent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img-index/banner-bg.jpg'); /* Example: Add a subtle background image if desired */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden; /* For any potential effects */
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay for readability */
+    z-index: 1;
+}
+
+.banner .container {
+    position: relative;
+    z-index: 2;
 }
 
 .banner h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.banner h2 {
-    font-size: 1.5rem;
+    font-size: 3.5em;
     margin-bottom: 20px;
+    color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.banner a {
-    background-color: #ffa500;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
+.banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.banner .btn {
+    display: inline-block;
+    background-color: #ffd700; /* Orange-gold button */
+    color: #1a1a1a; /* Dark text for button */
+    padding: 15px 30px;
     border-radius: 5px;
-    transition: background 0.3s;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.banner a:hover {
-    background-color: #ff8000;
+.banner .btn:hover {
+    background-color: #ffc400; /* Slightly darker orange on hover */
+    transform: translateY(-2px);
+    text-decoration: none;
 }
 
-/* About Section */
-.about {
+/* Features Section */
+.features {
+    background-color: #1a1a1a; /* Main dark background */
+    padding: 80px 0;
     text-align: center;
-    margin: 50px 0;
 }
 
-.about h2 {
-    color: #ffa500;
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.feature-item {
+    background-color: #222; /* Darker background for feature boxes */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.feature-item i {
+    font-size: 3em;
+    color: #ffd700; /* Orange-gold icons */
     margin-bottom: 20px;
-    font-size: 2rem;
 }
 
-.about p {
-    color: #ddd;
-    font-size: 1.1rem;
-}
-
-/* Standard Section */
-.tieu-chuan {
-    background-color: #2a2a2a;
-    padding: 30px 20px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.tieu-chuan h1 {
-    color: #ffa500;
+.feature-item h3 {
+    font-size: 1.5em;
     margin-bottom: 15px;
-    font-size: 1.8rem;
+    color: #fff;
 }
 
-.tieu-chuan p {
-    color: #ccc;
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
-
-.tieu-chuan ul {
-    list-style: none;
-    padding: 0;
-}
-
-.tieu-chuan ul li {
-    color: #ddd;
-    margin-bottom: 10px;
-}
-
-/* Service Section */
-.danh-sach-dich-vu h1 {
-    text-align: center;
-    color: #ffa500;
-    margin: 20px 0;
-    font-size: 2rem;
-}
-
-.danh-sach-dich-vu p {
-    text-align: center;
-    color: #ccc;
-    font-size: 1.1rem;
-}
-
-.danh-sach-dich-vu ul {
-    margin: 20px;
-    padding: 0;
-    list-style: none;
+.feature-item p {
+    font-size: 1em;
     color: #ddd;
 }
 
-.danh-sach-dich-vu h2 {
-    color: #ffa500;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.danh-sach-dich-vu li {
-    margin-bottom: 15px;
-}
-
-/* Commitment Section */
-.cam-ket {
-    background-color: #1f1f1f;
-    padding: 30px 20px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.cam-ket h1 {
-    color: #ffa500;
-    margin-bottom: 15px;
-}
-
-.cam-ket ul {
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 0;
-    list-style: none;
-    color: #ddd;
-}
-
-/* Testimonials */
+/* Testimonials Section */
 .testimonials {
+    background-color: #222; /* Darker background */
+    padding: 80px 0;
     text-align: center;
-    margin: 50px 0;
 }
 
 .testimonials h2 {
-    color: #ffa500;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #fff;
 }
 
 .testimonial-item {
-    background-color: #2a2a2a;
-    padding: 20px;
-    margin: 10px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    max-width: 700px;
+    background-color: #1a1a1a; /* Main dark background */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border-left: 5px solid #ffd700; /* Orange-gold accent */
 }
 
 .testimonial-item p {
-    font-size: 1rem;
-    color: #ddd;
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #eee;
 }
 
 .testimonial-item h4 {
-    margin-top: 15px;
-    color: #ffa500;
+    font-size: 1em;
+    color: #ffd700; /* Orange-gold for name */
+    text-align: right;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 20px 0;
+    background-color: #333; /* Header-like dark for footer */
+    color: #ddd;
+    padding: 30px 0;
     text-align: center;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin-bottom: 10px;
 }
 
 footer a {
-    color: #ffa500;
-    text-decoration: none;
-    font-weight: bold;
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    color: #ffd700; /* Orange-gold on hover */
+    text-decoration: none;
 }
-.footer-social a img{
-    width: 50px;
-}
+
 /* Floating Buttons */
 .floating-buttons {
     position: fixed;
@@ -247,26 +261,118 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    z-index: 1000;
 }
 
 .floating-buttons a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: #ffa500;
-    color: #000;
     padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
+    border-radius: 30px;
+    color: #fff;
     font-weight: bold;
-    transition: background 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .floating-buttons a:hover {
-    background-color: #ff8000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    text-decoration: none; /* Remove underline on hover */
 }
 
-.floating-buttons img {
+.floating-buttons a i,
+.floating-buttons a img {
+    margin-right: 8px;
+}
+
+.floating-buttons .call-button {
+    background-color: #ffd700; /* Orange-gold for call */
+    color: #1a1a1a; /* Dark text */
+}
+
+.floating-buttons .call-button i {
+    color: #1a1a1a;
+}
+
+.floating-buttons .zalo-button {
+    background-color: #007bff; /* A blue color for Zalo, as per common Zalo branding */
+    color: #fff;
+    /* You might need to adjust the Zalo image size */
+}
+
+.floating-buttons .zalo-button img {
+    height: 20px; /* Adjust Zalo logo size */
     width: 20px;
-    height: 20px;
+    object-fit: contain;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header ul {
+        margin-top: 15px;
+        flex-direction: column; /* Stack nav items vertically on small screens */
+        align-items: center;
+    }
+
+    header ul li {
+        margin: 10px 0; /* More vertical spacing */
+    }
+
+    header ul li:first-child {
+        margin-right: auto; /* Reset margin for logo on small screens */
+        margin-bottom: 15px;
+    }
+
+    .banner h1 {
+        font-size: 2.5em;
+    }
+
+    .banner p {
+        font-size: 1em;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .testimonials h2 {
+        font-size: 2em;
+    }
+
+    .testimonial-item {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+        flex-direction: row; /* Layout buttons horizontally on smaller screens */
+    }
+
+    .floating-buttons a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header ul li {
+        margin: 8px 0;
+    }
+    .banner h1 {
+        font-size: 2em;
+    }
+    .banner p {
+        font-size: 0.9em;
+    }
+    .floating-buttons {
+        flex-direction: column; /* Back to column if screen is very small */
+    }
 }
