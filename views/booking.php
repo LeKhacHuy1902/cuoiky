@@ -26,6 +26,16 @@
                     <option value="premium">Bảo Dưỡng Cao Cấp</option>
                 </select>
                 <input type="date" name="date" required>
+                <!-- ĐÂY LÀ CODE MẪU ĐỂ LÀM PHẦN CHỌN NHIỀU DỊCH VỤ -->
+                <select id="services" multiple>
+                    <option value="1" data-price="100000">Rửa Xe Cơ Bản - 100,000₫</option>
+                    <option value="2" data-price="200000">Vệ Sinh Nội Thất - 200,000₫</option>
+                    <option value="3" data-price="300000">Vệ Sinh Khoang Động Cơ - 300,000₫</option>
+                    <option value="4" data-price="500000">Bảo Dưỡng Cao Cấp - 500,000₫</option>
+                </select>
+                <!-- ĐÂY LÀ CODE MẪU TÍNH TỔNG TIỀN -->
+                <p>Tổng tiền: <span id="total">0</span> ₫</p>
+
                 <textarea name="notes" placeholder="Ghi Chú Thêm (Nếu Có)"></textarea>
                 <button type="submit" class="booking-btn">Đặt Lịch Ngay</button>
             </form>
