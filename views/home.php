@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fastsickduck</title>
+    <title>dịch vụ sửa chữa và rửa xe tại nhà</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/index.css">
 </head>
@@ -18,7 +18,6 @@
                         <li><img src="../img-index/logo.png" alt="logo"></li>
                         <li class="trang-chu"><a href="home.php">Trang Chủ</a></li>
                         <li><a href="#">Dịch Vụ</a></li>
-                        <li><a href="#">Sản Phẩm</a></li>
                         <li><a href="views/branches.php">Hệ Thống</a></li>
                         <li><a href="#">Blog</a></li>
                         <li class="views/orders.php"><a href="views/orders.php">Liên Hệ</a></li>
@@ -41,7 +40,7 @@
     <section class="about">
         <div class="container">
             <h2>Giới Thiệu</h2>
-            <p>Car Wash Centre là thương hiệu hàng đầu trong lĩnh vực chăm sóc và bảo dưỡng xe ô tô tại Việt Nam. Chúng tôi cam kết mang đến dịch vụ chuyên nghiệp và hiệu quả nhất cho khách hàng.</p>
+            <p>"" là thương hiệu hàng đầu trong lĩnh vực chăm sóc và bảo dưỡng xe ô tô tại Việt Nam. Chúng tôi cam kết mang đến dịch vụ chuyên nghiệp và hiệu quả nhất cho khách hàng.</p>
         </div>
     </section>
 
@@ -99,19 +98,7 @@
                         </ul>
                     </li>
                     <li>
-                        <h2>2. Sản phẩm chuyên dụng và phụ kiện xe</h2>
-                        <p>Cung cấp tát cả các sản phẩm chăm sóc chính hãng:</p>
-                        <br>
-                        <ul>
-                            <li>Dung lịch rửa xe.</li>
-                            <li>Dung dịch tẩy keo, chất bẩn cứng chuyên dụng</li>
-                            <li>Nhớt bôi trơn động cơ</li>
-                            <li>Nước làm mát động cơ</li>
-                            <li>Các loại khăn lau, chăm sóc xe.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>3. Bảo dưỡng phanh, thắng đĩa</h2>
+                        <h2>2. Bảo dưỡng phanh, thắng đĩa</h2>
                         <p>Cung cấp tất cả các sản phẩm, địch vụ bảo dưỡng phanh bao gồm:</p>
                         <br>
                         <ul>
@@ -122,7 +109,7 @@
                     </li>
 
                     <li>
-                        <h2>4. Bảo dưỡng, thay lốp xe</h2>
+                        <h2>3. Bảo dưỡng, thay lốp xe</h2>
                         <p>Cung cấp tất cả các sản phẩm dịch vụ bảo dưỡng thay lốp xe bao gồm:</p>
                         <br>
                         <ul>
@@ -135,7 +122,7 @@
                     </li>
 
                     <li>
-                        <h2>5. Bảo dưỡng khoang động cơ</h2>
+                        <h2>4. Bảo dưỡng khoang động cơ</h2>
                         <p>Cung câp tất cả các dịch vụ bao gồm</p>
                         <br>
                         <ul>
