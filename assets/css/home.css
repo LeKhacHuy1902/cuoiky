@@ -1,0 +1,766 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    /* Default text color */
+    background-color: #1a1a1a;
+    /* Dark background for the body */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: #ffd700;
+    /* Orange-gold color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header Styles */
+header {
+    background-color: #222;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+}
+
+header .nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header .nav .logo img {
+    height: 70px;
+}
+
+header .nav .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header .nav .nav-links li {
+    list-style: none;
+}
+
+header .nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 6px 10px;
+    transition: color 0.3s ease;
+}
+
+header .nav .nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Login Button */
+header .nav .login {
+    margin-left: auto;
+}
+
+header .nav .login a {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #222;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header .nav .login a i {
+    font-size: 16px;
+}
+
+header .nav .login a:hover {
+    background: linear-gradient(135deg, #ffa500, #ffd700);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        font-size: 16px;
+    }
+
+    header .nav {
+        flex-wrap: wrap;
+    }
+
+    header .nav .logo img {
+        height: 50px;
+    }
+
+    header .nav .nav-links {
+        flex: 1 1 100%;
+        justify-content: center;
+        margin: 10px 0;
+        gap: 20px;
+    }
+
+    header .nav .login {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../img-index/slogan.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.banner-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.banner-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #ddd;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Booking Box */
+.booking-box {
+    animation: float 3s ease-in-out infinite;
+}
+
+.booking-box .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ffc107);
+    color: #222;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.booking-box .btn:hover {
+    background: linear-gradient(135deg, #ffc107, #ffd700);
+    transform: scale(1.05);
+}
+
+/* Optional animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+
+/* giới thiệu */
+.about {
+    background: linear-gradient(135deg, #1a1a1a, #222);
+    /* gradient tối */
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 215, 0, 0.05);
+    /* vệt vàng mờ */
+    top: -50px;
+    left: -50px;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.about .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.about h2::after {
+    content: '';
+    display: block;
+    margin: 10px auto 0;
+    width: 60px;
+    height: 3px;
+    background-color: #ffd700;
+    border-radius: 2px;
+}
+
+.about p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    color: #ddd;
+    transition: color 0.3s ease;
+}
+
+.about p:hover {
+    color: #fff;
+}
+
+/* tiêu chuẩn bảo dưỡng */
+.tieu-chuan {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tieu-chuan h1 {
+    font-size: 3.5em;
+    /* to hơn */
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.tieu-chuan p {
+    font-size: 1.5em;
+    /* to hơn */
+    max-width: 900px;
+    margin: 30px auto 60px;
+    line-height: 2;
+    color: #ddd;
+}
+
+.tieu-chuan ul {
+    list-style: none;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.tieu-chuan ul li {
+    background-color: #222;
+    padding: 30px;
+    /* rộng rãi hơn */
+    font-size: 1.4em;
+    /* to hơn */
+    line-height: 1.9;
+    border-left: 5px solid #ffd700;
+    border-radius: 8px;
+    color: #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.tieu-chuan ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+/* dịch vụ */
+.danh-sach-dich-vu {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.danh-sach-dich-vu h1 {
+    font-size: 3.2em;
+    /* to hơn */
+    color: #ffd700;
+    margin-bottom: 25px;
+}
+
+.danh-sach-dich-vu h2 {
+    font-size: 2.4em;
+    /* to hơn */
+    color: #ffcc00;
+    margin: 18px 0;
+}
+
+.danh-sach-dich-vu h3 {
+    font-size: 2em;
+    /* to hơn */
+    color: #f5f5f5;
+    margin: 18px 0;
+}
+
+.danh-sach-dich-vu p {
+    font-size: 1.6em;
+    /* to hơn */
+    color: #ddd;
+    max-width: 1000px;
+    margin: 0 auto 35px;
+    line-height: 1.9;
+}
+
+.danh-sach-dich-vu hr {
+    width: 100px;
+    height: 3px;
+    background: #ffd700;
+    border: none;
+    margin: 25px auto;
+}
+
+.danh-sach-dich-vu .tu-van,
+.danh-sach-dich-vu .dichvu {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.danh-sach-dich-vu .tu-van {
+    background: #222;
+    border-radius: 10px;
+    padding: 40px 30px;
+    margin: 50px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    max-width: 1000px;
+    text-align: left;
+}
+
+.danh-sach-dich-vu .tu-van h1 {
+    font-size: 3em;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.danh-sach-dich-vu .tu-van h2 {
+    font-size: 2.4em;
+    color: #ffcc00;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.danh-sach-dich-vu .tu-van p {
+    font-size: 1.6em;
+    color: #ddd;
+    line-height: 1.9;
+    margin-bottom: 25px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.danh-sach-dich-vu .tu-van h3 {
+    font-size: 2em;
+    color: #ffe066;
+    margin: 20px 0 10px;
+    text-align: center;
+}
+
+.danh-sach-dich-vu .tu-van hr {
+    width: 80px;
+    height: 3px;
+    background: #ffd700;
+    border: none;
+    margin: 20px auto;
+}
+
+.danh-sach-dich-vu .tu-van ul {
+    list-style: disc;
+    padding-left: 40px;
+    margin-top: 20px;
+}
+
+.danh-sach-dich-vu .tu-van ul li {
+    font-size: 1.5em;
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li {
+    background: #222;
+    padding: 30px;
+    border-radius: 10px;
+    border-top: 5px solid #ffd700;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li>h2 {
+    color: #ffe066;
+    font-size: 2.2em;
+    /* to hơn */
+    margin-bottom: 12px;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li>p {
+    font-size: 1.5em;
+    /* to hơn */
+    color: #ccc;
+    line-height: 1.8;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li>ul {
+    margin-top: 12px;
+    list-style: disc;
+    padding-left: 25px;
+}
+
+.danh-sach-dich-vu .dichvu>div>ul>li>ul>li {
+    font-size: 1.4em;
+    /* to hơn */
+    color: #bbb;
+    line-height: 1.7;
+    margin-bottom: 6px;
+}
+
+/* phần cam kết */
+/* phần cam kết */
+.cam-ket {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.cam-ket h1 {
+    font-size: 3em;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.cam-ket p {
+    font-size: 1.6em;
+    color: #ddd;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.cam-ket ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cam-ket ul>li {
+    background: #222;
+    border-radius: 10px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cam-ket ul>li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.cam-ket ul>li>h2 {
+    font-size: 2em;
+    color: #ffe066;
+    margin-bottom: 15px;
+}
+
+.cam-ket ul>li>ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.cam-ket ul>li>ul>li {
+    position: relative;
+    /* thêm để ::before căn theo */
+    font-size: 1.4em;
+    color: #ccc;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    padding-left: 25px;
+    /* chừa chỗ cho icon */
+}
+
+.cam-ket ul>li>ul>li::before {
+    content: "✔";
+    color: #ffd700;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+/* phần phản hồi từ khách hàng */
+/* Phản hồi khách hàng */
+.testimonials {
+    background: #f8f8f8;
+    color: #333;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonials h2 {
+    font-size: 3em;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.testimonials .testimonial-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    position: relative;
+}
+
+.testimonials .testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials .testimonial-item p {
+    font-size: 1.4em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 50px;
+}
+
+.testimonials .testimonial-item p::before {
+    content: "“";
+    font-size: 4em;
+    color: #ffd700;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    line-height: 1;
+}
+
+.testimonials .testimonial-item h4 {
+    text-align: right;
+    font-size: 1.2em;
+    color: #888;
+    font-style: italic;
+    margin: 0;
+}
+
+/* phần footer */
+footer {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+footer h3 {
+    font-size: 1.8em;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+footer p {
+    font-size: 1.3em;
+    color: #ccc;
+    margin: 8px 0;
+}
+
+footer a {
+    color: #ccc;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+footer a img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+footer a img:hover {
+    transform: scale(1.2);
+}
+
+/* Newsletter */
+footer .newsletter form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+footer .newsletter input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+}
+
+footer .newsletter button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #ffd700;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+footer .newsletter button:hover {
+    background: #e6c200;
+}
+
+/* Floating buttons */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.floating-buttons a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #ffd700;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-buttons a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.floating-buttons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}

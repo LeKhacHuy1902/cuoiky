@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Care - Trang Chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/index.css"> </head>
+    <link rel="stylesheet" href="assets/css/index.css"> 
+</head>
 <body>
     <header>
         <div class="container">
@@ -13,7 +14,6 @@
                 <li><img src="img-index/logo.png" alt="Auto Care Logo"></li>
                 <li><a href="views/home.php">Trang chủ</a></li>
                 <li><a href="views/login.php">Đăng nhập</a></li>
-                <li><a href="views/register.php">Đăng ký</a></li>
                 <li><a href="views/booking.php">Đặt lịch</a></li>
                 <li><a href="views/orders.php">Đơn hàng</a></li>
                 <li><a href="views/admin/dashboard.php">Dashboard</a></li>
