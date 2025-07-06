@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS services (
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    bookings_date DATE NOT NULL,
+    bookings_date DATETIME NOT NULL,
     status VARCHAR(500) DEFAULT 'ĐANG CHỜ XỬ LÝ',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_price DECIMAL(10,2) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS bookings_services (
     PRIMARY KEY (bookings_id, services_id),
     FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE,
     FOREIGN KEY (services_id) REFERENCES services(id)
-)
+);
 
 -- Orders table
 CREATE TABLE IF NOT EXISTS orders (
