@@ -9,14 +9,15 @@ class BookingModel {
         $this->conn = $db->getConnection();
     }
 
-    public function createBooking($user_id, $address, $bookings_date, $total_price, $note, $serviceIds = []) {
+    public function createBooking($user_id, $address, $email, $bookings_date, $total_price, $note, $serviceIds = []) {
         try {
             // Insert booking
-            $sql = "INSERT INTO bookings (user_id, address, bookings_date, total_price, status, note)
+            $sql = "INSERT INTO bookings (user_id, address, bookings_date, total_price, status, note, email)
                     VALUES (:user_id, :address, :bookings_date, :total_price, 'ĐANG CHỜ XỬ LÝ', :note)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":user_id", $user_id);
             $stmt->bindParam(":address", $address);
+            $stmt->bindParam(":email", $email);
             $stmt->bindParam(":bookings_date", $bookings_date);
             $stmt->bindParam(":total_price", $total_price);
             $stmt->bindParam(":note", $note);
@@ -47,3 +48,4 @@ class BookingModel {
         }
     }
 }
+?>

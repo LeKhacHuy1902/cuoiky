@@ -1,25 +1,29 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
 
 class ServiceModel {
-    private $db;
+    private $conn;
 
-    public function __construct($database) {
-        $this->db = $database;
+    public function __construct() {
+        $db = new Database();
+        $this->conn = $db->getConnection();
     }
 
-    public function createService($data) {
-        // Code to create a service in the database
+    // Lấy tất cả dịch vụ
+    public function getAllServices() {
+        $sql = "SELECT * FROM services ORDER BY id DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getService($id) {
-        // Code to retrieve a service from the database
-    }
-
-    public function updateService($id, $data) {
-        // Code to update a service in the database
-    }
-
-    public function deleteService($id) {
-        // Code to delete a service from the database
+    // Lấy dịch vụ theo ID
+    public function getServiceById($id) {
+        $sql = "SELECT * FROM services WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
+?>
