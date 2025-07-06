@@ -1,25 +1,20 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
 
 class BookingModel {
-    private $db;
-
-    public function __construct($database) {
-        $this->db = $database;
+    private $conn;
+    public function __construct() {
+        $db = new Database();
+        $this->conn = $db->getConnection();
     }
 
-    public function createBooking($data) {
-        // Code to create a booking in the database
+    // Lấy tất cả bookings
+    public function getAllBookings() {
+        $sql = "SELECT * FROM bookings ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getBooking($id) {
-        // Code to retrieve a booking from the database
-    }
 
-    public function updateBooking($id, $data) {
-        // Code to update a booking in the database
-    }
-
-    public function deleteBooking($id) {
-        // Code to delete a booking from the database
-    }
 }
