@@ -229,5 +229,13 @@ class AdminModel {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     return $row['revenue'] ?? 0;
     }
+    //Lấy danh sách dịch vụ
+    public function getAllServices() {
+        $sql = "SELECT * FROM services ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }    
 ?>
