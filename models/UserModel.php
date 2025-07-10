@@ -137,5 +137,19 @@ class UserModel {
         $stmt->execute();
         return $stmt->fetchColumn() ? true : false;
     }
+    public function rate($user_id, $bookings_id, $rate, $comment) {
+        try {
+            $sql = "INSERT INTO rate (user_id, bookings_id, rate, comment) 
+                    VALUES (:user_id, :bookings_id, :rate, :comment)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":user_id", $user_id);
+            $stmt->bindParam(":bookings_id", $bookings_id);
+            $stmt->bindParam(":rate", $rate);
+            $stmt->bindParam(":comment", $comment);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return "Lỗi: " . $e->getMessage();
+        }
+    }
 }
 ?>
