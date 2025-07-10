@@ -60,6 +60,16 @@ CREATE TABLE IF NOT EXISTS orders (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE
 );
+CREATE TABLE IF NOT EXISTS rate (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    bookings_id INT NOT NULL,
+    rate INT NOT NULL CHECK (rate >= 1 AND rate <= 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE
+);
 
 
 
