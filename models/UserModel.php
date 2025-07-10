@@ -32,9 +32,12 @@ class UserModel {
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":phone", $phone);
             $stmt->bindParam(":full_name", $full_name);
-            $stmt->execute();
 
-            return true;
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return "Đăng ký thất bại!";
+            }
         } catch (PDOException $e) {
             return "Lỗi: " . $e->getMessage();
         }
@@ -50,11 +53,11 @@ class UserModel {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
-                return $user; // Trả về thông tin user
+                return $user;
             }
             return false;
         } catch (PDOException $e) {
-            return false;
+            return "Lỗi: " . $e->getMessage();
         }
     }
 
@@ -82,21 +85,37 @@ class UserModel {
         $stmt->bindParam(":phone", $phone);
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":id", $id);
-        return $stmt->execute();
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return "Cập nhật thất bại!";
+        }
     }
 
-    // Quên mật khẩu (reset)
-    public function resetPassword($email, $newPassword) {
-        if (!$this->checkEmailExists($email)) {
-            return "Email không tồn tại!";
+    // Reset mật khẩu (email hoặc phone)
+    public function resetPasswordByEmailOrPhone($emailOrPhone, $newPassword) {
+        $sql = "SELECT * FROM users WHERE email = :input OR phone = :input";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":input", $emailOrPhone);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return "Email hoặc số điện thoại không tồn tại!";
         }
 
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        $sql = "UPDATE users SET password = :password WHERE email = :email";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(":password", $hashedPassword);
-        $stmt->bindParam(":email", $email);
-        return $stmt->execute();
+        $sqlUpdate = "UPDATE users SET password = :password WHERE id = :id";
+        $stmtUpdate = $this->conn->prepare($sqlUpdate);
+        $stmtUpdate->bindParam(":password", $hashedPassword);
+        $stmtUpdate->bindParam(":id", $user['id']);
+
+        if ($stmtUpdate->execute()) {
+            return true;
+        } else {
+            return "Đặt lại mật khẩu thất bại!";
+        }
     }
 
     // Kiểm tra tồn tại username
@@ -137,6 +156,8 @@ class UserModel {
         $stmt->execute();
         return $stmt->fetchColumn() ? true : false;
     }
+
+    // Đánh giá
     public function rate($user_id, $bookings_id, $rate, $comment) {
         try {
             $sql = "INSERT INTO rate (user_id, bookings_id, rate, comment) 
@@ -146,7 +167,12 @@ class UserModel {
             $stmt->bindParam(":bookings_id", $bookings_id);
             $stmt->bindParam(":rate", $rate);
             $stmt->bindParam(":comment", $comment);
-            return $stmt->execute();
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return "Gửi đánh giá thất bại!";
+            }
         } catch (PDOException $e) {
             return "Lỗi: " . $e->getMessage();
         }

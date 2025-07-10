@@ -14,7 +14,7 @@
             <form action="process-forgot-password.php" method="POST">
                 <div class="input-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+                    <input type="email" id="email" name="email" required placeholder="Nhập email hoặc số điện thoại">
                 </div>
                 <button type="submit" class="submit-btn">Gửi Yêu Cầu</button>
             </form>
