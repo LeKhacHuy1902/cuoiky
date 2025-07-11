@@ -1,7 +1,7 @@
 -- Active: 1751721798292@@127.0.0.1@3306@mysql
-CREATE DATABASE IF NOT EXISTS cuoiky CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS b18_39446707_cuoiky_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-USE cuoiky;
+USE b18_39446707_cuoiky_db;
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (

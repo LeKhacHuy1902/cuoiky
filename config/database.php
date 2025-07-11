@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 class Database {
     private $host = 'localhost';
-    private $db_name = 'cuoiky';
+    private $db_name = 'b18_39446707_cuoiky_db'; // Change to your database name
     private $username = 'root'; // Change if your MySQL username is different
     private $password = 'Aa@123456';     // Change if your MySQL password is not empty
     public $conn;
