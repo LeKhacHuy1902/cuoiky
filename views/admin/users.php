@@ -10,7 +10,9 @@
     <div class="manage-users">
         <header>
             <h1>Quản Lý Người Dùng</h1>
+            <a href="dashboard.php" class="back-btn">← Quay lại</a>
         </header>
+
         <table>
             <thead>
                 <tr>

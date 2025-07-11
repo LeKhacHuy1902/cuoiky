@@ -10,7 +10,9 @@
     <div class="manage-services">
         <header>
             <h1>Quản Lý Dịch Vụ</h1>
+            <a href="dashboard.php" class="back-btn">← Quay lại</a>
         </header>
+
         <table>
             <thead>
                 <tr>
@@ -23,23 +25,24 @@
             </thead>
             <tbody>
                 <?php 
-                $services = [
-                    ['id' => 1, 'name' => 'Rửa xe cơ bản', 'description' => 'Rửa sạch xe máy hoặc ô tô.', 'price' => '100,000 VNĐ'],
-                    ['id' => 2, 'name' => 'Sửa xe nhỏ', 'description' => 'Sửa chữa các lỗi nhỏ như thay lốp, thay dầu.', 'price' => '200,000 VNĐ'],
-                ];
-                foreach ($services as $service) {
-                    echo "<tr>
-                            <td>{$service['id']}</td>
-                            <td>{$service['name']}</td>
-                            <td>{$service['description']}</td>
-                            <td>{$service['price']}</td>
-                            <td>
-                                <button class='edit-btn'>Sửa</button>
-                                <button class='delete-btn'>Xóa</button>
-                            </td>
-                          </tr>";
-                }
-                ?>
+                    $services = [
+                        ['id' => 1, 'name' => 'Rửa xe cơ bản', 'description' => 'Rửa sạch xe máy hoặc ô tô.', 'price' => '100,000 VNĐ'],
+                        ['id' => 2, 'name' => 'Sửa xe nhỏ', 'description' => 'Sửa chữa các lỗi nhỏ như thay lốp, thay dầu.', 'price' => '200,000 VNĐ'],
+                    ];
+                    foreach ($services as $service) {
+                        echo "<tr>
+                                <td>{$service['id']}</td>
+                                <td>{$service['name']}</td>
+                                <td>{$service['description']}</td>
+                                <td>{$service['price']}</td>
+
+                                <td>
+                                    <button class='edit-btn'>Sửa</button>
+                                    <button class='delete-btn'>Xóa</button>
+                                </td>
+                            </tr>";
+                    }
+                ?> 
             </tbody>
         </table>
     </div>
