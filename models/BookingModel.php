@@ -23,14 +23,9 @@ class BookingModel {
         array $serviceIds = []
     ): int|false {
         try {
-<<<<<<< HEAD
-            $sql = "INSERT INTO bookings (user_id, address, bookings_date, total_price, status, note, email)
-                VALUES (:user_id, :address, :bookings_date, :total_price, 'ĐANG CHỜ XỬ LÝ', :note, :email)";
-=======
             // 1. Insert booking
             $sql = "INSERT INTO bookings (user_id, address, bookings_date, total_price, status, note, email)
                     VALUES (:user_id, :address, :bookings_date, :total_price, 'ĐANG CHỜ XỬ LÝ', :note, :email)";
->>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
             $stmt->bindParam(":address", $address);
@@ -39,20 +34,6 @@ class BookingModel {
             $stmt->bindParam(":note", $note);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
-<<<<<<< HEAD
-
-            // ✅ Check lỗi SQL nếu có
-            if ($stmt->errorCode() !== '00000') {
-                echo "<pre>";
-                print_r($stmt->errorInfo());
-                echo "</pre>";
-                return false;
-            }
-
-            $bookingId = $this->conn->lastInsertId();
-=======
->>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
-
             $bookingId = (int)$this->conn->lastInsertId();
 
             // 2. Insert dịch vụ liên quan
@@ -62,23 +43,6 @@ class BookingModel {
                 $stmtPrice->bindParam(":serviceId", $serviceId, PDO::PARAM_INT);
                 $stmtPrice->execute();
                 $price = $stmtPrice->fetchColumn();
-
-<<<<<<< HEAD
-                $sqlService = "INSERT INTO bookings_services (bookings_id, services_id, price_at_booking)
-                               VALUES (:bookingId, :serviceId, :price)";
-                $stmtService = $this->conn->prepare($sqlService);
-                $stmtService->bindParam(":bookingId", $bookingId);
-                $stmtService->bindParam(":serviceId", $serviceId);
-                $stmtService->bindParam(":price", $price);
-                $stmtService->execute();
-
-                // ✅ Check lỗi SQL nếu có
-                if ($stmtService->errorCode() !== '00000') {
-                    echo "<pre>";
-                    print_r($stmtService->errorInfo());
-                    echo "</pre>";
-                    return false;
-=======
                 if ($price !== false) {
                     $sqlService = "INSERT INTO bookings_services (bookings_id, services_id, price_at_booking)
                                    VALUES (:bookingId, :serviceId, :price)";
@@ -87,7 +51,6 @@ class BookingModel {
                     $stmtService->bindParam(":serviceId", $serviceId, PDO::PARAM_INT);
                     $stmtService->bindParam(":price", $price);
                     $stmtService->execute();
->>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
                 }
             }
 
