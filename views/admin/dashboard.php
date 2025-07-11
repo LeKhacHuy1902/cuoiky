@@ -13,8 +13,10 @@
             <p>Chọn một danh mục để quản lý:</p>
         </header>
         <div class="menu">
-            <a href="users.html" class="menu-item">Quản Lý Người Dùng</a>
-            <a href="services.html" class="menu-item">Quản Lý Dịch Vụ</a>
+            <a href="users.php" class="menu-item">Quản Lý Người Dùng</a>
+            <a href="services.php" class="menu-item">Quản Lý Dịch Vụ</a>
+            <a href="order.php" class="menu-item">Quản lý đơn hàng</a>
+            <a href="bulletproof.php" class="menu-item">Thống kê báo cáo</a>
         </div>
     </div>
 </body>

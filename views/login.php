@@ -17,6 +17,12 @@
             <form action="../models/ProcessLogin.php" method="POST">
                 <input type="text" name="username" placeholder="Tên đăng nhập" required>
                 <input type="password" name="password" placeholder="Mật khẩu" required>
+
+                <label style="display: inline-flex; align-items: center; gap: 6px; margin-top: 3px; margin-bottom: 12px; cursor: pointer;">
+                    <input type="checkbox" name="is_manager" value="1" style="margin: 0;">
+                    <span>Quản lí</span>
+                </label>
+
                 <button type="submit" class="login-btn">Đăng Nhập</button>
             </form>
             <div class="login-options">
