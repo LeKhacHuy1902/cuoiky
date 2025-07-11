@@ -4,22 +4,35 @@ body {
     color: #fff;
     margin: 0;
     padding: 20px;
-    min-height: 100vh;
+    min-height: 100hv;
 }
 
-.manage-services {
+.manage-orders {
     background: linear-gradient(135deg, #1b1b1b, #333, #555);
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
-.manage-services h1{
-    text-align: center;
-}
+
 h1 {
     color: #ffa500;
     margin-bottom: 20px;
-    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: #ffa500;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #ff8000;
 }
 
 table {
@@ -46,34 +59,30 @@ table td {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.edit-btn, .delete-btn {
-    background: #ffa500;
-    color: #000;
+.confirm-btn, .cancel-btn {
     border: none;
     padding: 6px 12px;
     cursor: pointer;
     border-radius: 5px;
     margin: 2px;
+    font-weight: bold;
     transition: background 0.3s ease;
 }
 
-.edit-btn:hover, .delete-btn:hover {
-    background: #ff8000;
-}
-
-.back-btn {
-    display: inline-block;
-    margin: 15px 0;
-    background: #555;
+.confirm-btn {
+    background: #4caf50;
     color: #fff;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.3s ease;
 }
 
-.back-btn:hover {
-    background: #777;
-    transform: scale(1.05);
+.confirm-btn:hover {
+    background: #45a049;
+}
+
+.cancel-btn {
+    background: #f44336;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background: #e53935;
 }

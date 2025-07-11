@@ -1,15 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-    background: #1a1a1a;
+    background: linear-gradient(135deg, #1b1b1b, #333, #555);
     color: #fff;
     margin: 0;
     padding: 20px;
+    min-height: 100vh;
+}
+
+.manage-users {
+    max-width: 1000px;
+    margin: auto;
+    background: linear-gradient(135deg, #1b1b1b, #333, #555);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
     color: #ffa500;
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
 table {
@@ -17,28 +28,55 @@ table {
     border-collapse: collapse;
     margin: auto;
     margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 table th, table td {
     border: 1px solid #444;
-    padding: 10px;
+    padding: 12px 15px;
     text-align: left;
 }
 
 table th {
-    background: #333;
+    background: #222;
     color: #ffa500;
+    font-size: 1.1em;
+}
+
+table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 button {
     background: #ffa500;
     color: #000;
     border: none;
-    padding: 5px 10px;
+    padding: 7px 15px;
     cursor: pointer;
     border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
 button:hover {
     background: #ff8000;
+    transform: scale(1.05);
+}
+.back-btn {
+    display: inline-block;
+    margin: 15px 0;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #777;
+    transform: scale(1.05);
 }
