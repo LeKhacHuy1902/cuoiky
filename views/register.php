@@ -15,7 +15,7 @@
         <div class="register-form">
             <h2>Đăng Ký</h2>
             <form action="../models/ProcessRegister.php" method="POST">
-                <input type="text" name="fullname" placeholder="Họ và Tên" required>
+                <input type="text" name="full_name" placeholder="Họ và Tên" required>
                 <input type="text" name="username" placeholder="Tên Đăng Nhập" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="tel" name="phone" placeholder="Số Điện Thoại" required>
