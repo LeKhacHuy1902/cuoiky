@@ -88,7 +88,7 @@ header img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../img-index/banner-bg.jpg'); /* Example: Add a subtle background image if desired */
+    background-image: url('../images/slogan.png'); /* Example: Add a subtle background image if desired */
     background-size: cover;
     background-position: center;
     position: relative;
