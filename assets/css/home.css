@@ -113,6 +113,66 @@ header .nav .login a:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+/* users profile */
+.user-profile {
+  position: relative;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.user-profile .profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.user-profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.user-profile .username {
+  color:#ddd;
+  font-weight: bold;
+}
+
+.user-profile .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background:#ffd700;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+  min-width: 150px;
+}
+
+.user-profile .dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-profile .dropdown ul li {
+  padding: 10px 15px;
+}
+
+.user-profile .dropdown ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.user-profile .dropdown ul li:hover {
+  background: #f0f0f0;
+}
 
 /* Responsive */
 @media (max-width: 768px) {

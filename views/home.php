@@ -25,8 +25,18 @@
                     <li><a href="dich-vu-da-dat.php">Dịch vụ đã đặt</a></li>
                 </div>
 
-                <li class="login">
-                    <a href="login.php">Đăng nhập</a>
+                <li class="user-profile">
+                    <div class="profile" id="profile-btn">
+                        <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
+                        <span class="username">Nguyễn Văn A</span>
+                    </div>
+                    <div class="dropdown" id="profile-dropdown">
+                        <ul>
+                            <li><a href="profile.php">Hồ sơ</a></li>
+                            <li><a href="setting.php">Cài đặt</a></li>
+                            <li><a href="../index.php">Đăng xuất</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -40,7 +50,7 @@
             <h2>Chăm sóc tận tình cho từng chi tiết</h2>
 
             <div class="booking-box">
-                <a href="views/booking.php" class="btn">Đặt lịch ngay</a>
+                <a href="booking.php" class="btn">Đặt lịch ngay</a>
             </div>
         </div>
     </section>
@@ -320,26 +330,33 @@
                 <a href="#"><img src="../assets/images/Facebook-logo.png" alt="Facebook"></a>
                 <a href="#"><img src="../assets/images/Instagram-logo.png" alt="Instagram"></a>
             </div>
-            <div class="newsletter">
-                <h3>Đăng Ký Nhận Tin Tức</h3>
-                <form action="#">
-                    <input type="email" placeholder="Nhập email của bạn">
-                    <button type="submit">Đăng Ký</button>
-                </form>
-            </div>
         </div>
     </footer>
 
     <!-- Nút liên hệ -->
     <div class="floating-buttons">
-        <a href="#" class="call-button">
+        <a href="tel:0835552953" class="call-button">
             <i class="fas fa-phone"></i> Gọi Ngay
         </a>
-        <a href="#" class="zalo-button">
+        <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
             <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
         </a>
     </div>
     
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("profile-btn");
+      const dropdown = document.getElementById("profile-dropdown");
 
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", () => {
+        dropdown.style.display = "none";
+      });
+    });
+    </script>
+</body>
 </html>

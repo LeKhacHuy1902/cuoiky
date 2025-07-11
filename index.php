@@ -19,11 +19,10 @@
                     <img src="assets/images/logo.png" alt="Auto Care Logo">
                 </li>
                 <div class="nav-links">
-                    <li><a href="views/home.php">Trang chủ</a></li>
-                    <li><a href="views/branches.php">Hệ thống</a></li>
-                    <li><a href="views/booking.php">Đặt lịch</a></li>
-                    <li><a href="views/dich-vu-da-dat.php">Dịch vụ đã đặt</a></li>
-                    <li><a href="views/home.php">Trang chủ</a></li>
+                    <li><a href="index.php">Trang chủ</a></li>
+                    <li><a href="views/login.php">Hệ thống</a></li>
+                    <li><a href="views/login.php">Đặt lịch</a></li>
+                    <li><a href="views/login.php">Dịch vụ đã đặt</a></li>
                 </div>
 
                 <li class="login">
@@ -41,7 +40,7 @@
             <h2>Chăm sóc tận tình cho từng chi tiết</h2>
 
             <div class="booking-box">
-                <a href="views/booking.php" class="btn">Đặt lịch ngay</a>
+                <a href="views/b.php" class="btn">Đặt lịch ngay</a>
             </div>
         </div>
     </section>
@@ -321,25 +320,18 @@
                 <a href="#"><img src="assets/images/Facebook-logo.png" alt="Facebook"></a>
                 <a href="#"><img src="assets/images/Instagram-logo.png" alt="Instagram"></a>
             </div>
-            <div class="newsletter">
-                <h3>Đăng Ký Nhận Tin Tức</h3>
-                <form action="#">
-                    <input type="email" placeholder="Nhập email của bạn">
-                    <button type="submit">Đăng Ký</button>
-                </form>
-            </div>
         </div>
     </footer>
 
     <!-- Nút liên hệ -->
     <div class="floating-buttons">
-        <a href="#" class="call-button">
+        <a href="tel:0835552953" class="call-button">
             <i class="fas fa-phone"></i> Gọi Ngay
         </a>
-        <a href="#" class="zalo-button">
+        <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
             <img src="assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
         </a>
-    </div>
+</div>
     
 </body>
 

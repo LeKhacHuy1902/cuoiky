@@ -29,11 +29,6 @@
           <span class="username">Nguyễn Văn A</span>
         </div>
         <div class="dropdown" id="profile-dropdown">
-          <ul>
-            <li><a href="profile.php">Hồ sơ</a></li>
-            <li><a href="setting.php">Cài đặt</a></li>
-            <li><a href="../index.php">Đăng xuất</a></li>
-          </ul>
         </div>
       </li>
       </ul>
@@ -77,12 +72,12 @@
 
     <!-- Nút liên hệ -->
     <div class="floating-buttons">
-        <a href="#" class="call-button">
-            <i class="fas fa-phone"></i> Gọi Ngay
-        </a>
-        <a href="#" class="zalo-button">
-            <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
-        </a>
+      <a href="tel:0835552953" class="call-button">
+        <i class="fas fa-phone"></i> Gọi Ngay
+      </a>
+      <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
+      </a>
     </div>
     
     <!-- test -->
