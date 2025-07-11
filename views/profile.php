@@ -10,21 +10,22 @@
 </head>
 <body>
 
+<form id="profileForm" method="POST" action="../models/ProcessUpdateUserInfo.php">
 <div class="container">
   <div class="profile-img">
     <img src="../assets/images/Avatar-mac-dinh.png" alt="Avatar">
   </div>
 
-  <!-- Hiển thị tên, email, phone lấy từ database -->
   <h2 id="name"><?= htmlspecialchars($user['full_name']) ?></h2>
   <p><i class="fas fa-envelope"></i> <span id="email"><?= htmlspecialchars($user['email']) ?></span></p>
   <p><i class="fas fa-phone"></i> <span id="phone"><?= htmlspecialchars($user['phone']) ?></span></p>
 
-  <button id="editBtn"><i class="fas fa-edit"></i> Chỉnh sửa hồ sơ</button>
+  <button type="button" id="editBtn"><i class="fas fa-edit"></i> Chỉnh sửa hồ sơ</button>
 
   <br><br>
   <a href="home.php" class="back-btn" id="backBtn"><i class="fas fa-home"></i> Về Trang Chủ</a>
 </div>
+</form>
 
 <script>
 const btn = document.getElementById('editBtn');
@@ -48,7 +49,6 @@ function enableEdit() {
   replaceWithInput('email');
   replaceWithInput('phone');
 
-  // Thêm 2 input mật khẩu mới vào trước nút Lưu
   const container = document.querySelector('.container');
   const newPassword = document.createElement('input');
   newPassword.type = 'password';
@@ -64,37 +64,31 @@ function enableEdit() {
   confirmPassword.style.marginTop = '10px';
   confirmPassword.style.display = 'block';
 
-  // Thêm vào ngay trước nút Lưu hồ sơ
   container.insertBefore(confirmPassword, btn);
   container.insertBefore(newPassword, confirmPassword);
 }
 
 function saveEdit() {
-  const newPassword = document.getElementById('new-password');
-  const confirmPassword = document.getElementById('confirm-password');
+  const nameInput = document.getElementById('name-input').value;
+  const emailInput = document.getElementById('email-input').value;
+  const phoneInput = document.getElementById('phone-input').value;
+  const newPassword = document.getElementById('new-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
 
-  if (newPassword && confirmPassword) {
-    if (newPassword.value !== confirmPassword.value) {
-      alert('Mật khẩu xác nhận không khớp!');
-      return;
-    }
-
-    if (newPassword.value.trim() !== "") {
-      console.log('Mật khẩu mới:', newPassword.value);
-      // Gửi mật khẩu mới lên server tại đây nếu cần
-    }
+  if (newPassword !== confirmPassword) {
+    alert('Mật khẩu xác nhận không khớp!');
+    return;
   }
 
-  editing = false;
-  btn.innerHTML = '<i class="fas fa-edit"></i> Chỉnh sửa hồ sơ';
-  backBtn.style.display = 'inline-block';
+  // Tạo input hidden để gửi lên server
+  const form = document.getElementById('profileForm');
 
-  saveInput('name');
-  saveInput('email');
-  saveInput('phone');
+  form.innerHTML += `<input type="hidden" name="full_name" value="${nameInput}">`;
+  form.innerHTML += `<input type="hidden" name="email" value="${emailInput}">`;
+  form.innerHTML += `<input type="hidden" name="phone" value="${phoneInput}">`;
+  form.innerHTML += `<input type="hidden" name="new_password" value="${newPassword}">`;
 
-  if (newPassword) newPassword.remove();
-  if (confirmPassword) confirmPassword.remove();
+  form.submit();
 }
 
 function replaceWithInput(id) {

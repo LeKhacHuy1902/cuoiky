@@ -60,19 +60,27 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);     
     }      
 
-    public function updateProfile(int $id, string $full_name, string $phone, string $email): bool|string {         
-        if ($this->checkEmailExists($email, $id)) return "Email đã tồn tại!";         
-        if ($this->checkPhoneExists($phone, $id)) return "Số điện thoại đã tồn tại!";         
+    public function updateProfile(int $id, string $full_name, string $phone, string $email, ?string $password = null): bool|string {
+    if ($this->checkEmailExists($email, $id)) return "Email đã tồn tại!";
+    if ($this->checkPhoneExists($phone, $id)) return "Số điện thoại đã tồn tại!";
 
-        $sql = "UPDATE users SET full_name = :full_name, phone = :phone, email = :email WHERE id = :id";         
-        $stmt = $this->conn->prepare($sql);         
-        $stmt->bindParam(":full_name", $full_name);         
-        $stmt->bindParam(":phone", $phone);         
-        $stmt->bindParam(":email", $email);         
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);         
+    if ($password) {
+        $sql = "UPDATE users SET full_name = :full_name, phone = :phone, email = :email, password = :password WHERE id = :id";
+    } else {
+        $sql = "UPDATE users SET full_name = :full_name, phone = :phone, email = :email WHERE id = :id";
+    }
 
-        return $stmt->execute() ? true : "Cập nhật thất bại!";     
-    }      
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(":full_name", $full_name);
+    $stmt->bindParam(":phone", $phone);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    if ($password) {
+        $stmt->bindParam(":password", $password);
+    }
+
+    return $stmt->execute() ? true : "Cập nhật thất bại!";
+}      
 
     public function resetPassword(string $email, string $newPassword): bool|string {         
         if (!$this->checkEmailExists($email)) return "Email không tồn tại!";         
