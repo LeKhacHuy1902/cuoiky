@@ -1,55 +1,44 @@
 <?php
-require_once __DIR__ . '/../models/ServiceModel.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require_once __DIR__ . '/../models/BookingModel.php';
+require_once __DIR__ . '/../models/ServiceModel.php';
 
 $serviceModel = new ServiceModel();
 $bookingModel = new BookingModel();
-
 $services = $serviceModel->getAllServices();
-$successMessage = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!isset($_SESSION["user"])) {
-        die("Vui lòng đăng nhập để đặt lịch!");
-    }
+$successMessage = '';
 
-    $userId = $_SESSION["user"]["id"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $address = $_POST["address"];
-    $date = $_POST["date"];
-    $notes = $_POST["notes"] ?? "";
-    $selectedServices = $_POST["services"] ?? [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION["user"])) {
+    $full_name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $bookings_date = $_POST['date'];
+    $note = $_POST['notes'] ?? '';
+    $serviceIds = $_POST['services'] ?? [];
 
-    if (empty($selectedServices)) {
-        die("Bạn chưa chọn dịch vụ nào!");
-    }
-
-    // Tính tổng tiền và ép kiểu float
-    $totalPrice = 0.0;
-    foreach ($selectedServices as $serviceId) {
-        $service = $serviceModel->getServiceById($serviceId);
-        if ($service) {
-            $totalPrice += (float)$service["price"];
+    // Tính tổng tiền
+    $total_price = 0;
+    foreach ($serviceIds as $serviceId) {
+        foreach ($services as $service) {
+            if ($service['id'] == $serviceId) {
+                $total_price += $service['price'];
+            }
         }
     }
 
-    // Ép kiểu float khi truyền vào hàm
-    $bookingId = $bookingModel->createBooking(
-        $userId,
-        $address,
-        $email,
-        $date,
-        $phone,
-        (float)$totalPrice,
-        $notes,
-        $selectedServices
-    );
+    $userId = $_SESSION["user"]["id"];
 
-    if ($bookingId !== false) {
-        $successMessage = "Đặt lịch thành công!";
+    // Gọi model để lưu booking
+    $bookingId = $bookingModel->createBooking($userId, $full_name, $address, $bookings_date, $phone, $total_price, $note, $serviceIds);
+
+    if ($bookingId) {
+        $successMessage = "Đặt lịch thành công! Mã đơn: #" . $bookingId;
     } else {
-        $successMessage = "Có lỗi xảy ra khi đặt lịch!";
+        $successMessage = "Đặt lịch thất bại, vui lòng thử lại.";
     }
 }
 ?>

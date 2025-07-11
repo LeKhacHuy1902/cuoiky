@@ -27,9 +27,10 @@ CREATE TABLE IF NOT EXISTS services (
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    full_name VARCHAR(255) NOT NULL,  -- ⭐ Thêm tên người đặt
     bookings_date DATETIME NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    address VARCHAR(500) NOT NULL,
+    address VARCHAR(500) NOT NULL,    -- Địa chỉ người đặt, không phụ thuộc user
     status VARCHAR(500) DEFAULT 'ĐANG CHỜ XỬ LÝ',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_price DECIMAL(10,2) NOT NULL,
