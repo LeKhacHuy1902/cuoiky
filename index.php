@@ -308,20 +308,25 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container footer-container">
-            <div class="footer-info">
-                <h3>Liên Hệ</h3>
-                <p><i class="fas fa-map-marker-alt"></i> chưa có</p>
-                <p><i class="fas fa-envelope"></i> chưa có</p>
-                <p><i class="fas fa-phone"></i> chưa có</p>
-            </div>
-            <div class="footer-social">
-                <h3>Theo Dõi</h3>
-                <a href="#"><img src="assets/images/Facebook-logo.png" alt="Facebook"></a>
-                <a href="#"><img src="assets/images/Instagram-logo.png" alt="Instagram"></a>
-            </div>
+    <div class="container footer-container">
+        <div class="footer-info">
+            <h3>Liên Hệ</h3>
+            <p><i class="fas fa-map-marker-alt"></i> chưa có</p>
+            <p><i class="fas fa-envelope"></i> chưa có</p>
+            <p><i class="fas fa-phone"></i> chưa có</p>
         </div>
+        <div class="footer-social">
+            <h3>Theo Dõi</h3>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/Facebook-logo.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/Instagram-logo.png" alt="Instagram">
+            </a>
+        </div>
+     </div>
     </footer>
+
 
     <!-- Nút liên hệ -->
     <div class="floating-buttons">
