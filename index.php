@@ -40,7 +40,7 @@
             <h2>Chăm sóc tận tình cho từng chi tiết</h2>
 
             <div class="booking-box">
-                <a href="views/b.php" class="btn">Đặt lịch ngay</a>
+                <a href="views/login.php" class="btn">Đặt lịch ngay</a>
             </div>
         </div>
     </section>
