@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -29,7 +32,16 @@
         <li class="user-profile">
         <div class="profile" id="profile-btn">
           <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
-          <span class="username">Nguyễn Văn A</span>
+          <span class="username">
+            <?php 
+              if (isset($_SESSION["user"])) {
+                echo htmlspecialchars($_SESSION["user"]["full_name"]);
+              } else {
+                echo "Người dùng";
+            }
+            ?>
+          </span>
+
         </div>
         <div class="dropdown" id="profile-dropdown">
         </div>
