@@ -21,7 +21,7 @@
   <button id="editBtn"><i class="fas fa-edit"></i> Chỉnh sửa hồ sơ</button>
 
   <br><br>
-  <a href="../index.php" class="back-btn" id="backBtn"><i class="fas fa-home"></i> Về Trang Chủ</a>
+  <a href="home.php" class="back-btn" id="backBtn"><i class="fas fa-home"></i> Về Trang Chủ</a>
 </div>
 
 <script>
