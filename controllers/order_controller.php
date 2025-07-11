@@ -1,11 +1,11 @@
 <?php
-session_start();
 require_once '../config/auth.php';
 require_once '../models/BookingModel.php';
 
-checkLogin();
+// Kiểm tra đăng nhập
+requireLogin();
 
 $bookingModel = new BookingModel();
-$orders = $bookingModel->getUserBookings($_SESSION['user']['id']);
+$orders = $bookingModel->getUserBookings(currentUser()['id']);
 
 include '../views/orders.php';
