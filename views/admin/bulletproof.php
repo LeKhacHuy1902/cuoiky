@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../../assets/css/bulletproof.css">
 </head>
 <body>
-<div class="report-page">
+<div class="bulletproof">
     <header>
         <h1>Thống Kê & Báo Cáo</h1>
-        <a href="dashboard.php" class="back-btn">← Quay lại Dashboard</a>
+        <a href="dashboard.php" class="back-btn">← Quay lại</a>
     </header>
 
     <div class="filter">

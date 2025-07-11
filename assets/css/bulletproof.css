@@ -7,19 +7,21 @@ body {
     min-height: 100vh;
 }
 
-.report-page {
+.bulletproof {
     background: linear-gradient(135deg, #1b1b1b, #333, #555);
     max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
     padding: 20px;
 }
 
 h1 {
     color: #ffa500;
     margin-bottom: 20px;
+    text-align: center;
 }
-
+.filter{
+    text-align: center;
+}
 .back-btn {
     display: inline-block;
     margin-bottom: 20px;
