@@ -77,11 +77,12 @@ header .nav .nav-links a {
     font-weight: 600;
     font-size: 20px;
     padding: 6px 10px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
 }
 
 header .nav .nav-links a:hover {
     color: #ffd700;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 .user-profile {
   position: relative;
@@ -121,6 +122,15 @@ header .nav .nav-links a:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 10;
   min-width: 150px;
+  opacity: 0; /* For animation */
+  transform: translateY(-10px); /* For animation */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* For animation */
+}
+
+.user-profile:hover .dropdown { /* Show dropdown on hover with animation */
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .user-profile .dropdown ul {
@@ -177,14 +187,32 @@ header .nav .nav-links a:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 20px;
   position: relative;
+  opacity: 0; /* Initial state for animation */
+  transform: translateY(20px); /* Initial state for animation */
+  animation: branch-fade-in 0.6s forwards; /* Animation name and properties */
+}
+
+/* Delay animation for each branch */
+.branch:nth-child(1) { animation-delay: 0.1s; }
+.branch:nth-child(2) { animation-delay: 0.2s; }
+.branch:nth-child(3) { animation-delay: 0.3s; }
+.branch:nth-child(4) { animation-delay: 0.4s; }
+.branch:nth-child(5) { animation-delay: 0.5s; }
+/* Add more as needed based on the number of branches */
+
+@keyframes branch-fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .branch:nth-child(odd) {
-  left: -30px;
+  left: -30px; /* This will be overridden on mobile */
 }
 
 .branch:nth-child(even) {
-  left: 30px;
+  left: 30px; /* This will be overridden on mobile */
 }
 
 .branch:hover {
@@ -280,6 +308,73 @@ header .nav .login a:hover {
         text-align: center;
         margin-top: 10px;
     }
+
+    .branches-title {
+        font-size: 2.2em;
+        margin: 30px 0 15px;
+    }
+
+    .branch {
+        flex-direction: column; /* Stack image and info vertically */
+        align-items: center;
+        padding: 15px;
+        left: 0 !important; /* Remove horizontal offset on mobile */
+    }
+
+    .branch-image {
+        margin-right: 0;
+        margin-bottom: 15px; /* Add space between image and info */
+    }
+
+    .branch-image img {
+        max-width: 80px; /* Slightly smaller image on mobile */
+    }
+
+    .branch-info {
+        text-align: center;
+    }
+
+    .branch-info h2 {
+        font-size: 1.5em;
+    }
+
+    .branch-info p {
+        font-size: 1em;
+    }
+
+    footer .footer-container {
+        grid-template-columns: 1fr; /* Stack footer columns on mobile */
+        text-align: center;
+    }
+
+    footer .newsletter form {
+        justify-content: center;
+    }
+
+    footer .newsletter input[type="email"] {
+        flex: none;
+        width: 80%; /* Adjust width for input field */
+        margin-bottom: 10px;
+    }
+
+    footer .newsletter button {
+        width: 80%;
+    }
+
+    .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .floating-buttons a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .floating-buttons img {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 
@@ -352,11 +447,12 @@ footer .newsletter button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease; /* Added transform for animation */
 }
 
 footer .newsletter button:hover {
     background: #e6c200;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
 /* Floating buttons */

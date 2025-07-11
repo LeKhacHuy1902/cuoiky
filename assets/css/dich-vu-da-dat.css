@@ -59,11 +59,12 @@ header .nav .nav-links a {
     font-weight: 600;
     font-size: 20px;
     padding: 6px 10px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
 }
 
 header .nav .nav-links a:hover {
     color: #ffd700;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 .container {
     max-width: 1200px;
@@ -118,6 +119,15 @@ a:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 10;
   min-width: 150px;
+  opacity: 0; /* For animation */
+  transform: translateY(-10px); /* For animation */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* For animation */
+}
+
+.user-profile:hover .dropdown { /* Show dropdown on hover with animation */
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .user-profile .dropdown ul {
@@ -164,7 +174,24 @@ h1 {
   justify-content: space-between;
   align-items: center;
   transition: 0.3s ease;
+  opacity: 0; /* Initial state for animation */
+  transform: translateX(-20px); /* Initial state for animation */
+  animation: service-slide-in 0.6s forwards; /* Animation name and properties */
 }
+
+/* Delay animation for each service */
+.service:nth-child(1) { animation-delay: 0.1s; }
+.service:nth-child(2) { animation-delay: 0.2s; }
+.service:nth-child(3) { animation-delay: 0.3s; }
+/* Add more as needed based on the number of services */
+
+@keyframes service-slide-in {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 
 .service:hover {
   background: rgba(255,255,255,0.1);
@@ -193,11 +220,12 @@ h1 {
   border-radius: 50px;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.3s ease;
+  transition: 0.3s ease, transform 0.2s ease; /* Added transform for animation */
 }
 
 .btn-cancel:hover {
   background: #cc0000;
+  transform: scale(1.05); /* Slight scale on hover */
 }
 
 .empty-message {
@@ -276,11 +304,12 @@ footer .newsletter button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease; /* Added transform for animation */
 }
 
 footer .newsletter button:hover {
     background: #e6c200;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
 /* Floating buttons */
@@ -317,4 +346,96 @@ footer .newsletter button:hover {
     width: 24px;
     height: 24px;
     object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        font-size: 16px;
+    }
+
+    header .nav {
+        flex-wrap: wrap;
+    }
+
+    header .nav .logo img {
+        height: 50px;
+    }
+
+    header .nav .nav-links {
+        flex: 1 1 100%;
+        justify-content: center;
+        margin: 10px 0;
+        gap: 20px;
+    }
+
+    header .nav .login {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .service {
+        flex-direction: column; /* Stack info and button vertically */
+        align-items: flex-start; /* Align content to the left */
+        padding: 15px;
+    }
+
+    .service-info {
+        max-width: 100%; /* Use full width */
+        margin-bottom: 15px; /* Add space between info and button */
+    }
+
+    .service-info h2 {
+        font-size: 1.4em;
+    }
+
+    .service-info p {
+        font-size: 0.95em;
+    }
+
+    .btn-cancel {
+        width: 100%; /* Make button full width */
+        text-align: center;
+        padding: 12px 0; /* Adjust padding for better look */
+    }
+
+    footer .footer-container {
+        grid-template-columns: 1fr; /* Stack footer columns on mobile */
+        text-align: center;
+    }
+
+    footer .newsletter form {
+        justify-content: center;
+    }
+
+    footer .newsletter input[type="email"] {
+        flex: none;
+        width: 80%; /* Adjust width for input field */
+        margin-bottom: 10px;
+    }
+
+    footer .newsletter button {
+        width: 80%;
+    }
+
+    .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .floating-buttons a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .floating-buttons img {
+        width: 20px;
+        height: 20px;
+    }
 }

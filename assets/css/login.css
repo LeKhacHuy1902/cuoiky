@@ -3,25 +3,27 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #1b1b1b, #333, #555);
     color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scroll on animations */
 }
 
 /* Container */
 .login-container {
     display: flex;
     flex-direction: row;
-    max-width: 800px;
+    max-width: 900px; /* Slightly increased max-width */
     width: 90%;
     background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     overflow: hidden;
+    animation: fadeIn 1s ease-out;
 }
 
 /* Banner Section */
@@ -32,21 +34,44 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px; /* Increased padding */
     color: #fff;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Darker overlay */
+    z-index: 1;
+}
+
+.login-banner h1, .login-banner p {
+    position: relative;
+    z-index: 2;
 }
 
 .login-banner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 3rem; /* Larger heading */
+    margin-bottom: 15px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    animation: slideInFromLeft 1s ease-out;
 }
 
 .login-banner p {
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Larger paragraph */
     font-weight: 300;
+    opacity: 0.9;
+    line-height: 1.6;
+    animation: slideInFromRight 1s ease-out;
 }
 
 /* Form Section */
@@ -58,12 +83,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-left: 5px solid #f8a51d; /* Add border for visual separation */
 }
 
 .login-form h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem; /* Larger heading */
+    margin-bottom: 30px;
     color: #f8a51d;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    animation: fadeInScale 1s ease-out;
 }
 
 .login-form form {
@@ -73,49 +101,170 @@ body {
 }
 
 .login-form input {
-    margin-bottom: 15px;
-    padding: 10px 15px;
-    font-size: 1rem;
+    margin-bottom: 18px;
+    padding: 12px 18px;
+    font-size: 1.1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #333;
     color: #fff;
     outline: none;
+    transition: all 0.3s ease;
+}
+
+.login-form input::placeholder {
+    color: #bbb;
 }
 
 .login-form input:focus {
     border: 2px solid #f8a51d;
+    background-color: #444;
+    box-shadow: 0 0 10px rgba(248, 165, 29, 0.5);
 }
 
 .login-btn {
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 15px 25px;
+    font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(135deg, #f8a51d, #f36d00);
+    background: linear-gradient(90deg, #f8a51d, #ffa500);
+    color: #1a1a1a;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px; /* Space above button */
 }
 
 .login-btn:hover {
-    background: linear-gradient(135deg, #f36d00, #f8a51d);
-    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.5);
+    background: linear-gradient(90deg, #ffa500, #f8a51d);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.login-options {
+.forgot-password-link {
     margin-top: 20px;
-    text-align: center;
+    font-size: 0.95rem;
 }
 
-.login-options a {
+.forgot-password-link a {
     color: #f8a51d;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.login-options a:hover {
-    color: #f36d00;
+.forgot-password-link a:hover {
+    color: #ffc400;
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column; /* Stack banner and form vertically */
+        width: 95%;
+        margin: 20px 0;
+    }
+
+    .login-banner {
+        padding: 30px 20px;
+        border-bottom: 5px solid #f8a51d; /* Move border to bottom for stacked layout */
+        border-left: none; /* Remove left border */
+    }
+
+    .login-banner h1 {
+        font-size: 2.2rem;
+    }
+
+    .login-banner p {
+        font-size: 1.1rem;
+    }
+
+    .login-form {
+        padding: 30px 20px;
+        border-left: none; /* Remove left border */
+    }
+
+    .login-form h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .login-form input {
+        font-size: 1rem;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+    }
+
+    .login-btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    .forgot-password-link {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-banner h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-banner p {
+        font-size: 0.9rem;
+    }
+
+    .login-form h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
