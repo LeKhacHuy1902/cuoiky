@@ -1,16 +1,17 @@
 <?php
+
 require_once __DIR__ . '/../config/database.php';
 
 class UserModel {
-    private $conn;
+    private PDO $conn;
 
     public function __construct() {
         $db = new Database();
         $this->conn = $db->getConnection();
     }
 
-    // Đăng ký
-    public function register($username, $password, $email, $phone, $full_name) {
+   
+    public function register(string $username, string $password, string $email, string $phone, string $full_name): bool|string {
         try {
             if ($this->checkUsernameExists($username)) {
                 return "Username đã tồn tại!";
@@ -24,8 +25,8 @@ class UserModel {
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO users (username, password, email, phone, full_name) 
-                    VALUES (:username, :password, :email, :phone, :full_name)";
+            $sql = "INSERT INTO users (username, password_hash, email, phone, full_name, role)
+                    VALUES (:username, :password, :email, :phone, :full_name, 'customer')";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":password", $hashedPassword);
@@ -33,18 +34,23 @@ class UserModel {
             $stmt->bindParam(":phone", $phone);
             $stmt->bindParam(":full_name", $full_name);
 
+<<<<<<< HEAD
             if ($stmt->execute()) {
                 return true;
             } else {
                 return "Đăng ký thất bại!";
             }
+=======
+            return $stmt->execute();
+
+>>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
         } catch (PDOException $e) {
-            return "Lỗi: " . $e->getMessage();
+            error_log("Đăng ký lỗi: " . $e->getMessage());
+            return "Lỗi hệ thống. Vui lòng thử lại sau.";
         }
     }
 
-    // Đăng nhập
-    public function login($username, $password) {
+    public function login(string $username, string $password): array|false {
         try {
             $sql = "SELECT * FROM users WHERE username = :username";
             $stmt = $this->conn->prepare($sql);
@@ -52,26 +58,36 @@ class UserModel {
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+<<<<<<< HEAD
             if ($user && password_verify($password, $user['password'])) {
+=======
+            if ($user && password_verify($password, $user['password_hash'])) {
+>>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
                 return $user;
             }
+
             return false;
         } catch (PDOException $e) {
+<<<<<<< HEAD
             return "Lỗi: " . $e->getMessage();
+=======
+            error_log("Login error: " . $e->getMessage());
+            return false;
+>>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
         }
     }
 
-    // Lấy thông tin user
-    public function getUserById($id) {
+    
+    public function getUserById(int $id): array|false {
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Cập nhật thông tin
-    public function updateProfile($id, $full_name, $phone, $email) {
+    
+    public function updateProfile(int $id, string $full_name, string $phone, string $email): bool|string {
         if ($this->checkEmailExists($email, $id)) {
             return "Email đã tồn tại!";
         }
@@ -84,6 +100,7 @@ class UserModel {
         $stmt->bindParam(":full_name", $full_name);
         $stmt->bindParam(":phone", $phone);
         $stmt->bindParam(":email", $email);
+<<<<<<< HEAD
         $stmt->bindParam(":id", $id);
 
         if ($stmt->execute()) {
@@ -116,19 +133,39 @@ class UserModel {
         } else {
             return "Đặt lại mật khẩu thất bại!";
         }
+=======
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 
-    // Kiểm tra tồn tại username
-    public function checkUsernameExists($username) {
+   
+    public function resetPassword(string $email, string $newPassword): bool|string {
+        if (!$this->checkEmailExists($email)) {
+            return "Email không tồn tại!";
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET password_hash = :password WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":password", $hashedPassword);
+        $stmt->bindParam(":email", $email);
+
+        return $stmt->execute();
+>>>>>>> 1b031585ad1e5d404c1445d14aa455d1341126c0
+    }
+
+    
+    public function checkUsernameExists(string $username): bool {
         $sql = "SELECT id FROM users WHERE username = :username";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":username", $username);
         $stmt->execute();
-        return $stmt->fetchColumn() ? true : false;
+        return (bool) $stmt->fetchColumn();
     }
 
-    // Kiểm tra tồn tại email
-    public function checkEmailExists($email, $ignoreId = null) {
+    
+    public function checkEmailExists(string $email, ?int $ignoreId = null): bool {
         $sql = "SELECT id FROM users WHERE email = :email";
         if ($ignoreId) {
             $sql .= " AND id != :ignoreId";
@@ -136,14 +173,14 @@ class UserModel {
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":email", $email);
         if ($ignoreId) {
-            $stmt->bindParam(":ignoreId", $ignoreId);
+            $stmt->bindParam(":ignoreId", $ignoreId, PDO::PARAM_INT);
         }
         $stmt->execute();
-        return $stmt->fetchColumn() ? true : false;
+        return (bool) $stmt->fetchColumn();
     }
 
-    // Kiểm tra tồn tại phone
-    public function checkPhoneExists($phone, $ignoreId = null) {
+    
+    public function checkPhoneExists(string $phone, ?int $ignoreId = null): bool {
         $sql = "SELECT id FROM users WHERE phone = :phone";
         if ($ignoreId) {
             $sql .= " AND id != :ignoreId";
@@ -151,10 +188,10 @@ class UserModel {
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":phone", $phone);
         if ($ignoreId) {
-            $stmt->bindParam(":ignoreId", $ignoreId);
+            $stmt->bindParam(":ignoreId", $ignoreId, PDO::PARAM_INT);
         }
         $stmt->execute();
-        return $stmt->fetchColumn() ? true : false;
+        return (bool) $stmt->fetchColumn();
     }
 
     // Đánh giá
@@ -178,4 +215,3 @@ class UserModel {
         }
     }
 }
-?>
