@@ -1,128 +1,119 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đặt Lịch - Rửa Xe Thể Thao</title>
-  <link rel="stylesheet" href="../assets/css/booking.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hồ Sơ Người Dùng</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.profile-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.info {
+  text-align: left;
+  margin-top: 20px;
+}
+.info-item {
+  margin-bottom: 15px;
+}
+button {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <ul class="nav">
-        <li class="logo">
-          <img src="../assets/images/logo.png" alt="Auto Care Logo">
-        </li>
-        <div class="nav-links">
-          <li><a href="home.php">Trang chủ</a></li>
-          <li><a href="branches.php">Hệ thống</a></li>
-          <li><a href="booking.php">Đặt lịch</a></li>
-          <li><a href="dich-vu-da-dat.php">Dịch vụ đã đặt</a></li>
-        </div>
 
-        <li class="user-profile">
-          <div class="profile" id="profile-btn">
-            <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
-            <span class="username">Nguyễn Văn A</span>
-          </div>
-          <div class="dropdown" id="profile-dropdown">
-          </div>
-        </li>
-      </ul>
-    </div>
-  </header>
-
-
-  <div class="booking-container">
-    <div class="booking-banner">
-      <h1>Đặt Lịch Dễ Dàng</h1>
-      <p>Đưa xe của bạn đến dịch vụ chăm sóc tốt nhất!</p>
-    </div>
-    <div class="booking-form">
-      <h2>Đặt Lịch Rửa Xe</h2>
-      <form method="POST">
-        <input type="text" name="name" placeholder="Họ và Tên" required>
-        <input type="tel" name="phone" placeholder="Số Điện Thoại" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="address" placeholder="Địa chỉ" required>
-        <input type="date" name="date" required>
-
-        <div class="service-options">
-          <p><strong>Dịch vụ:</strong></p>
-          <label>
-            <input type="checkbox" name="services[]" value="1" data-price="100000">
-            Rửa Xe Cơ Bản - 100,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="2" data-price="200000">
-            Vệ Sinh Nội Thất - 200,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="3" data-price="300000">
-            Vệ Sinh Khoang Động Cơ - 300,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="4" data-price="500000">
-            Bảo Dưỡng Cao Cấp - 500,000₫
-          </label>
-        </div>
-
-
-        <p>Tổng tiền: <span id="total">0</span> ₫</p>
-
-        <textarea name="notes" placeholder="Ghi Chú Thêm (Nếu Có)"></textarea>
-        <button type="submit" class="booking-btn">Đặt Lịch Ngay</button>
-      </form>
-    </div>
+<div class="container">
+  <div class="profile-img">
+    <img src="../img-index/user-avatar.png" alt="Avatar">
   </div>
 
+  <h2 id="name">Nguyễn Văn A</h2>
+  <p><i class="fas fa-envelope"></i> <span id="email">nguyenvana@example.com</span></p>
+  <p><i class="fas fa-phone"></i> <span id="phone">0123 456 789</span></p>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-container">
-      <div class="footer-info">
-        <h3>Liên Hệ</h3>
-        <p><i class="fas fa-map-marker-alt"></i> chưa có</p>
-        <p><i class="fas fa-envelope"></i> chưa có</p>
-        <p><i class="fas fa-phone"></i> chưa có</p>
-      </div>
-      <div class="footer-social">
-        <h3>Theo Dõi</h3>
-        <a href="#"><img src="../assets/images/Facebook-logo.png" alt="Facebook"></a>
-        <a href="#"><img src="../assets/images/Instagram-logo.png" alt="Instagram"></a>
-      </div>
-    </div>
-  </footer>
+  <button id="editBtn"><i class="fas fa-edit"></i> Chỉnh sửa hồ sơ</button>
+</div>
 
-  <!-- Nút liên hệ -->
-  <div class="floating-buttons">
-    <a href="tel:0835552953" class="call-button">
-      <i class="fas fa-phone"></i> Gọi Ngay
-    </a>
-    <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
-      <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
-    </a>
-  </div>
+<script>
+const btn = document.getElementById('editBtn');
+let editing = false;
 
-  <!-- event hồ sơ -->
-  <script>
-        document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("profile-btn");
-      const dropdown = document.getElementById("profile-dropdown");
+btn.addEventListener('click', () => {
+  if (!editing) {
+    enableEdit();
+  } else {
+    saveEdit();
+  }
+});
 
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-      });
+function enableEdit() {
+  editing = true;
+  btn.innerHTML = '<i class="fas fa-save"></i> Lưu hồ sơ';
 
-      document.addEventListener("click", () => {
-        dropdown.style.display = "none";
-      });
-    });
-    </script>
+  replaceWithInput('name');
+  replaceWithInput('email');
+  replaceWithInput('phone');
+}
+
+function saveEdit() {
+  editing = false;
+  btn.innerHTML = '<i class="fas fa-edit"></i> Chỉnh sửa hồ sơ';
+
+  saveInput('name');
+  saveInput('email');
+  saveInput('phone');
+}
+
+function replaceWithInput(id) {
+  const el = document.getElementById(id);
+  const val = el.textContent;
+  el.innerHTML = `<input type="text" id="${id}-input" value="${val}">`;
+}
+
+function saveInput(id) {
+  const input = document.getElementById(`${id}-input`);
+  if (input) {
+    document.getElementById(id).textContent = input.value;
+  }
+}
+</script>
+
 </body>
-
 </html>

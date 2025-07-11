@@ -33,7 +33,6 @@
                     <div class="dropdown" id="profile-dropdown">
                         <ul>
                             <li><a href="profile.php">Hồ sơ</a></li>
-                            <li><a href="setting.php">Cài đặt</a></li>
                             <li><a href="../index.php">Đăng xuất</a></li>
                         </ul>
                     </div>
