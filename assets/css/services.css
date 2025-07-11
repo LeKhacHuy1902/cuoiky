@@ -60,20 +60,18 @@ table td {
 .edit-btn:hover, .delete-btn:hover {
     background: #ff8000;
 }
-
 .back-btn {
     display: inline-block;
-    margin: 15px 0;
-    background: #555;
-    color: #fff;
+    margin-bottom: 20px;
+    background: #ffa500;
+    color: #000;
     text-decoration: none;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 5px;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .back-btn:hover {
-    background: #777;
-    transform: scale(1.05);
+    background: #ff8000;
 }
