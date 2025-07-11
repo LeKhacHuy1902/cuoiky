@@ -103,10 +103,10 @@ session_start();
         <div class="footer-social">
             <h3>Theo Dõi</h3>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/Facebook-logo.png" alt="Facebook">
+                <img src="../assets/images/Facebook-logo.png" alt="Facebook">
             </a>
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/Instagram-logo.png" alt="Instagram">
+                <img src="../assets/images/Instagram-logo.png" alt="Instagram">
             </a>
         </div>
      </div>

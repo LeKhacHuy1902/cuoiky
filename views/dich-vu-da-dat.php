@@ -3,10 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// Import model
 require_once __DIR__ . '/../models/BookingModel.php';
 
-// Kiểm tra đăng nhập
 if (!isset($_SESSION["user"])) {
     header("Location: ../index.php");
     exit;
@@ -15,17 +13,10 @@ if (!isset($_SESSION["user"])) {
 $bookingModel = new BookingModel();
 $userId = $_SESSION["user"]["id"];
 
-// Nếu bấm nút hủy
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking_id'])) {
     $bookingId = (int)$_POST['booking_id'];
+    $bookingModel->cancelBooking($bookingId, $userId);
 
-    // Update trạng thái đơn hàng sang "ĐÃ HỦY"
-    $stmt = $bookingModel->conn->prepare("UPDATE bookings SET status = 'ĐÃ HỦY' WHERE id = :id AND user_id = :user_id");
-    $stmt->bindParam(":id", $bookingId, PDO::PARAM_INT);
-    $stmt->bindParam(":user_id", $userId, PDO::PARAM_INT);
-    $stmt->execute();
-
-    // Refresh lại dữ liệu
     header("Location: dich-vu-da-dat.php");
     exit;
 }
@@ -59,7 +50,7 @@ $bookings = $bookingModel->getUserBookings($userId);
                 <div class="profile" id="profile-btn">
                     <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
                     <span class="username">
-                        <?= isset($_SESSION["user"]) ? htmlspecialchars($_SESSION["user"]["full_name"]) : "Người dùng"; ?>
+                        <?= htmlspecialchars($_SESSION["user"]["full_name"]) ?>
                     </span>
                 </div>
                 <div class="dropdown" id="profile-dropdown">
@@ -92,12 +83,12 @@ $bookings = $bookingModel->getUserBookings($userId);
                         <p><i class="fas fa-info-circle"></i> Trạng thái: <?= htmlspecialchars($booking['status']) ?></p>
 
                         <!-- Nút hủy -->
-                        <?php if ($booking['status'] !== 'ĐÃ HỦY'): ?>
+                        <?php if ($booking['status'] === 'ĐANG CHỜ XỬ LÝ'): ?>
                             <form method="POST" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn này?');">
                                 <input type="hidden" name="booking_id" value="<?= htmlspecialchars($booking['id']) ?>">
                                 <button type="submit" class="cancel-btn">Hủy đơn</button>
                             </form>
-                        <?php else: ?>
+                        <?php elseif ($booking['status'] === 'ĐÃ HỦY'): ?>
                             <p style="color: red; font-weight: bold;">Đơn đã hủy</p>
                         <?php endif; ?>
                     </div>
@@ -110,7 +101,7 @@ $bookings = $bookingModel->getUserBookings($userId);
 <footer>
     <div class="container footer-container">
         <div class="footer-info">
-             <h3>Liên Hệ</h3>
+            <h3>Liên Hệ</h3>
             <p><i class="fas fa-map-marker-alt"></i> 123 Lê Lợi, Quận 1</p>
             <p><i class="fas fa-envelope"></i> contact@example.com</p>
             <p><i class="fas fa-phone"></i> 0835552953</p>
@@ -128,12 +119,12 @@ $bookings = $bookingModel->getUserBookings($userId);
 </footer>
 
 <div class="floating-buttons">
-  <a href="tel:0835552953" class="call-button">
-    <i class="fas fa-phone"></i> Gọi Ngay
-  </a>
-  <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
-    <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
-  </a>
+    <a href="tel:0835552953" class="call-button">
+        <i class="fas fa-phone"></i> Gọi Ngay
+    </a>
+    <a href="https://zalo.me/0835552953" class="zalo-button" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
+    </a>
 </div>
 
 <script>

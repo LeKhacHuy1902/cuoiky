@@ -109,5 +109,14 @@ class BookingModel {
 
         return array_values($bookings);
     }
+
+    public function cancelBooking(int $bookingId, int $userId): bool {
+        $sql = "UPDATE bookings SET status = 'ĐÃ HỦY' 
+                WHERE id = :id AND user_id = :user_id AND status = 'ĐANG CHỜ XỬ LÝ'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":id", $bookingId, PDO::PARAM_INT);
+        $stmt->bindParam(":user_id", $userId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
 ?>
