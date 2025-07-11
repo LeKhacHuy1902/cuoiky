@@ -11,10 +11,10 @@
         <div class="form-container">
             <h1>Quên Mật Khẩu</h1>
             <p>Vui lòng nhập email đã đăng ký của bạn. Chúng tôi sẽ gửi một liên kết để đặt lại mật khẩu.</p>
-            <form action="process-forgot-password.php" method="POST">
+            <form action="../models/ProcessForgotPassword.php" method="POST">
                 <div class="input-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="Nhập email hoặc số điện thoại">
+                    <input type="email" id="email" name="email" required placeholder="Nhập email đăng kí">
                 </div>
                 <button type="submit" class="submit-btn">Gửi Yêu Cầu</button>
             </form>

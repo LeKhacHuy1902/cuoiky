@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(500) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(500) NOT NULL UNIQUE,
+    reset_token VARCHAR(255) DEFAULT NULL,
+    reset_token_expiry DATETIME DEFAULT NULL,
     full_name VARCHAR(500),
     phone VARCHAR(15),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

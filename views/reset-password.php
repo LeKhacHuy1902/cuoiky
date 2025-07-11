@@ -11,7 +11,7 @@
         <div class="form-container">
             <h1>Đặt lại mật khẩu mới</h1>
             <p>Vui lòng nhập email đã đăng ký của bạn. Chúng tôi sẽ gửi một liên kết để đặt lại mật khẩu.</p>
-            <form action="process-forgot-password.php" method="POST">
+            <form action="../models/ProcessResetPassword.php" method="POST">
                 <div class="input-group">
                     <input type="password" name="new_password" placeholder="Mật khẩu mới" required><br>
                     <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required><br>
