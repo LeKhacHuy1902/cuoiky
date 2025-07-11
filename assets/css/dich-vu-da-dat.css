@@ -1,33 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #fff;
-    /* Default text color */
-    background-color: #1a1a1a;
-    /* Dark background for the body */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1b1b1b, #333, #555);
+  color: #fff;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
 }
-
-a {
-    color: #ffd700;
-    /* Orange-gold color for links */
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 /* Header Styles */
 header {
     background-color: #222;
@@ -82,6 +64,21 @@ header .nav .nav-links a {
 
 header .nav .nav-links a:hover {
     color: #ffd700;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: #ffd700;
+    /* Orange-gold color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 .user-profile {
   position: relative;
@@ -143,146 +140,72 @@ header .nav .nav-links a:hover {
   background: #f0f0f0;
 }
 
-/* chuỗi cửa hàng */
 
-.branches-title {
+h1 {
   text-align: center;
-  font-size: 2.8em;
-  margin: 40px 0 20px;
-  color:#ffd700;
-  font-weight: 700;
+  margin-bottom: 30px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  color: #ffd700;
 }
 
-.branches {
+.service-list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 15px;
+  gap: 20px;
 }
 
-.branch {
-  background: #fff;
+.service {
+  background: rgba(255,255,255,0.05);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 20px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
 }
 
-.branch:nth-child(odd) {
-  left: -30px;
-}
-
-.branch:nth-child(even) {
-  left: 30px;
-}
-
-.branch:hover {
+.service:hover {
+  background: rgba(255,255,255,0.1);
   transform: scale(1.02);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-.branch-image {
-  flex: 0 0 100px;
-  margin-right: 20px;
+.service-info {
+  max-width: 70%;
 }
 
-.branch-image img {
-  max-width: 100px;
-  height: auto;
+.service-info h2 {
+  margin: 0 0 10px;
+  color: #ffd700;
 }
 
-.branch-info {
-  flex: 1;
+.service-info p {
+  margin: 5px 0;
+  color: #ddd;
 }
 
-.branch-info h2 {
-  font-size: 1.8em;
-  color: #444;
-  margin-bottom: 8px;
+.btn-cancel {
+  background: #ff4444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
-.branch-info p {
-  margin: 6px 0;
-  color: #555;
-  font-size: 1.2em;
-  line-height: 1.6;
+.btn-cancel:hover {
+  background: #cc0000;
 }
 
-.branch-info i {
-  color: #ffa500;
-  margin-right: 8px;
+.empty-message {
+  text-align: center;
+  font-size: 1.5em;
+  color: #aaa;
+  margin-top: 50px;
 }
-
-/* Login Button */
-header .nav .login {
-    margin-left: auto;
-}
-
-header .nav .login a {
-    background: linear-gradient(135deg, #ffd700, #ffa500);
-    color: #222;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 8px 20px;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-header .nav .login a i {
-    font-size: 16px;
-}
-
-header .nav .login a:hover {
-    background: linear-gradient(135deg, #ffa500, #ffd700);
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    header {
-        font-size: 16px;
-    }
-
-    header .nav {
-        flex-wrap: wrap;
-    }
-
-    header .nav .logo img {
-        height: 50px;
-    }
-
-    header .nav .nav-links {
-        flex: 1 1 100%;
-        justify-content: center;
-        margin: 10px 0;
-        gap: 20px;
-    }
-
-    header .nav .login {
-        flex: 1 1 100%;
-        text-align: center;
-        margin-top: 10px;
-    }
-}
-
-
 /* phần footer */
 footer {
     background: #1a1a1a;
@@ -319,6 +242,7 @@ footer a {
 }
 
 footer a img {
+    border-radius: 50%;
     width: 50px;
     height: 50px;
     object-fit: contain;
