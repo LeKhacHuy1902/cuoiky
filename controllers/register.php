@@ -3,7 +3,13 @@ require_once '../models/UserModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userModel = new UserModel();
-    $result = $userModel->register($_POST);
+    $result = $userModel->register(
+        $_POST['username'] ?? '',
+        $_POST['password'] ?? '',
+        $_POST['email'] ?? '',
+        $_POST['fullname'] ?? '',
+        $_POST['phone'] ?? ''
+    );
 
     if ($result) {
         header("Location: login.php");

@@ -9,7 +9,7 @@ class UserModel {
         $this->conn = $db->getConnection();
     }
 
-    // Đăng ký
+    // Đăng ký tài khoản mới
     public function register($username, $password, $email, $phone, $full_name) {
         try {
             if ($this->checkUsernameExists($username)) {
@@ -50,7 +50,7 @@ class UserModel {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
-                return $user; // Trả về thông tin user
+                return $user;
             }
             return false;
         } catch (PDOException $e) {
@@ -58,7 +58,7 @@ class UserModel {
         }
     }
 
-    // Lấy thông tin user
+    // Lấy thông tin người dùng theo ID
     public function getUserById($id) {
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -67,7 +67,7 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Cập nhật thông tin
+    // Cập nhật thông tin người dùng
     public function updateProfile($id, $full_name, $phone, $email) {
         if ($this->checkEmailExists($email, $id)) {
             return "Email đã tồn tại!";
@@ -85,7 +85,7 @@ class UserModel {
         return $stmt->execute();
     }
 
-    // Quên mật khẩu (reset)
+    // Đặt lại mật khẩu
     public function resetPassword($email, $newPassword) {
         if (!$this->checkEmailExists($email)) {
             return "Email không tồn tại!";
@@ -99,7 +99,7 @@ class UserModel {
         return $stmt->execute();
     }
 
-    // Kiểm tra tồn tại username
+    // Kiểm tra username đã tồn tại
     public function checkUsernameExists($username) {
         $sql = "SELECT id FROM users WHERE username = :username";
         $stmt = $this->conn->prepare($sql);
@@ -108,35 +108,37 @@ class UserModel {
         return $stmt->fetchColumn() ? true : false;
     }
 
-    // Kiểm tra tồn tại email
+    // Kiểm tra email đã tồn tại (có thể bỏ qua ID hiện tại nếu cập nhật)
     public function checkEmailExists($email, $ignoreId = null) {
         $sql = "SELECT id FROM users WHERE email = :email";
-        if ($ignoreId) {
+        if ($ignoreId !== null) {
             $sql .= " AND id != :ignoreId";
         }
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":email", $email);
-        if ($ignoreId) {
+        if ($ignoreId !== null) {
             $stmt->bindParam(":ignoreId", $ignoreId);
         }
         $stmt->execute();
         return $stmt->fetchColumn() ? true : false;
     }
 
-    // Kiểm tra tồn tại phone
+    // Kiểm tra số điện thoại đã tồn tại (có thể bỏ qua ID hiện tại nếu cập nhật)
     public function checkPhoneExists($phone, $ignoreId = null) {
         $sql = "SELECT id FROM users WHERE phone = :phone";
-        if ($ignoreId) {
+        if ($ignoreId !== null) {
             $sql .= " AND id != :ignoreId";
         }
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":phone", $phone);
-        if ($ignoreId) {
+        if ($ignoreId !== null) {
             $stmt->bindParam(":ignoreId", $ignoreId);
         }
         $stmt->execute();
         return $stmt->fetchColumn() ? true : false;
     }
+
+    // Người dùng đánh giá dịch vụ
     public function rate($user_id, $bookings_id, $rate, $comment) {
         try {
             $sql = "INSERT INTO rate (user_id, bookings_id, rate, comment) 
