@@ -66,15 +66,19 @@ session_start();
     <footer>
         <div class="container footer-container">
             <div class="footer-info">
-                <h3>Liên Hệ</h3>
-                <p><i class="fas fa-map-marker-alt"></i> chưa có</p>
-                <p><i class="fas fa-envelope"></i> chưa có</p>
-                <p><i class="fas fa-phone"></i> chưa có</p>
+                 <h3>Liên Hệ</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Lê Lợi, Quận 1</p>
+            <p><i class="fas fa-envelope"></i> contact@example.com</p>
+            <p><i class="fas fa-phone"></i> 0835552953</p>
             </div>
             <div class="footer-social">
                 <h3>Theo Dõi</h3>
-                <a href="#"><img src="../assets/images/Facebook-logo.png" alt="Facebook"></a>
-                <a href="#"><img src="../assets/images/Instagram-logo.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/Facebook-logo.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/Instagram-logo.png" alt="Instagram">
+            </a>
             </div>
             <div class="newsletter">
                 <h3>Đăng Ký Nhận Tin Tức</h3>
