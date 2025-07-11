@@ -1,15 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1b1b1b, #333, #555);
-  color: #fff;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    /* Default text color */
+    background-color: #1a1a1a;
+    /* Dark background for the body */
 }
 
 .container {
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+a {
+    color: #ffd700;
+    /* Orange-gold color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* Header Styles */
 header {
     background-color: #222;
@@ -59,28 +77,43 @@ header .nav .nav-links a {
     font-weight: 600;
     font-size: 20px;
     padding: 6px 10px;
-    transition: color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
+    transition: color 0.3s ease;
 }
 
 header .nav .nav-links a:hover {
     color: #ffd700;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
-a {
-    color: #ffd700;
-    /* Orange-gold color for links */
+/* Login Button */
+header .nav .login {
+    margin-left: auto;
+}
+
+header .nav .login a {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #222;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-a:hover {
-    text-decoration: underline;
+header .nav .login a i {
+    font-size: 16px;
 }
+
+header .nav .login a:hover {
+    background: linear-gradient(135deg, #ffa500, #ffd700);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* users profile */
 .user-profile {
   position: relative;
   margin-left: auto;
@@ -103,7 +136,7 @@ a:hover {
 }
 
 .user-profile .username {
-  color: #fff;
+  color:#ddd;
   font-weight: bold;
 }
 
@@ -112,22 +145,13 @@ a:hover {
   position: absolute;
   right: 0;
   top: 45px;
-  background: #fff;
+  background:#ffd700;
   color: #333;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 10;
   min-width: 150px;
-  opacity: 0; /* For animation */
-  transform: translateY(-10px); /* For animation */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* For animation */
-}
-
-.user-profile:hover .dropdown { /* Show dropdown on hover with animation */
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .user-profile .dropdown ul {
@@ -148,6 +172,34 @@ a:hover {
 
 .user-profile .dropdown ul li:hover {
   background: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        font-size: 16px;
+    }
+
+    header .nav {
+        flex-wrap: wrap;
+    }
+
+    header .nav .logo img {
+        height: 50px;
+    }
+
+    header .nav .nav-links {
+        flex: 1 1 100%;
+        justify-content: center;
+        margin: 10px 0;
+        gap: 20px;
+    }
+
+    header .nav .login {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
 }
 
 

@@ -11,7 +11,6 @@ session_start();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/branche.css">
-  <script src="../assets/js/branche.js"></script>
 </head>
 
 <body>
@@ -121,18 +120,18 @@ session_start();
     <!-- event hồ sơ -->
   <script>
         document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("profile-btn");
-      const dropdown = document.getElementById("profile-dropdown");
+            const btn = document.getElementById("profile-btn");
+            const dropdown = document.getElementById("profile-dropdown");
 
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-      });
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
 
-      document.addEventListener("click", () => {
-        dropdown.style.display = "none";
-      });
-    });
-  </script>
+            document.addEventListener("click", () => {
+                dropdown.style.display = "none";
+            });
+        });
+    </script>
 </body>
 </html>

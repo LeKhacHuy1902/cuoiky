@@ -126,18 +126,18 @@ session_start();
   <!-- event hồ sơ -->
   <script>
         document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("profile-btn");
-      const dropdown = document.getElementById("profile-dropdown");
+            const btn = document.getElementById("profile-btn");
+            const dropdown = document.getElementById("profile-dropdown");
 
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-      });
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
 
-      document.addEventListener("click", () => {
-        dropdown.style.display = "none";
-      });
-    });
+            document.addEventListener("click", () => {
+                dropdown.style.display = "none";
+            });
+        });
     </script>
 </body>
 </html>

@@ -12,45 +12,44 @@ session_start();
 
 </head>
 <body>
-<!-- Header -->
-  <header>
-    <div class="container">
-      <ul class="nav">
-        <li class="logo">
-          <img src="../assets/images/logo.png" alt="Auto Care Logo">
-        </li>
-        <div class="nav-links">
-          <li><a href="home.php">Trang chủ</a></li>
-          <li><a href="branches.php">Hệ thống</a></li>
-          <li><a href="booking.php">Đặt lịch</a></li>
-          <li><a href="dich-vu-da-dat.php">Dịch vụ đã đặt</a></li>
-        </div>
 
-        <li class="user-profile">
-        <div class="profile" id="profile-btn">
-          <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
-          <span class="username">
-            <?php 
-              if (isset($_SESSION["user"])) {
-                echo htmlspecialchars($_SESSION["user"]["full_name"]);
-              } else {
-                echo "Người dùng";
-              }
-            ?>
-          </span>
+  <!-- Header -->
+    <header>
+        <div class="container">
+            <ul class="nav">
+                <li class="logo">
+                    <img src="../assets/images/logo.png" alt="Auto Care Logo">
+                </li>
+                <div class="nav-links">
+                    <li><a href="home.php">Trang chủ</a></li>
+                    <li><a href="branches.php">Hệ thống</a></li>
+                    <li><a href="booking.php">Đặt lịch</a></li>
+                    <li><a href="dich-vu-da-dat.php">Dịch vụ đã đặt</a></li>
+                </div>
 
+                <li class="user-profile">
+                    <div class="profile" id="profile-btn">
+                        <img src="../assets/images/Avatar-mac-dinh.png" alt="User Avatar">
+                        <span class="username">
+                            <?php 
+                                if (isset($_SESSION["user"])) {
+                                    echo htmlspecialchars($_SESSION["user"]["full_name"]);
+                                } else {
+                                    echo "Người dùng";
+                            }
+                            ?>
+                        </span>
+                    </div>
+                    <div class="dropdown" id="profile-dropdown">
+                        <ul>
+                            <li><a href="profile.php">Hồ sơ</a></li>
+                            <li><a href="../index.php">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="dropdown" id="profile-dropdown">
-          <ul>
-            <li><a href="profile.php">Hồ sơ</a></li>
-            <li><a href="../index.php">Đăng xuất</a></li>
-          </ul>
-        </div>
-        </div>
-      </li>
-      </ul>
-    </div>
-  </header>
+    </header>
 
 <div class="container">
   <h1>Dịch Vụ Đã Đặt</h1>
@@ -165,18 +164,18 @@ session_start();
 });
 // event khi nhấn vào tài khoảng
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("profile-btn");
-  const dropdown = document.getElementById("profile-dropdown");
+            const btn = document.getElementById("profile-btn");
+            const dropdown = document.getElementById("profile-dropdown");
 
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-  });
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
 
-  document.addEventListener("click", () => {
-    dropdown.style.display = "none";
-  });
-});
+            document.addEventListener("click", () => {
+                dropdown.style.display = "none";
+            });
+        });
 
     </script>
 </body>
