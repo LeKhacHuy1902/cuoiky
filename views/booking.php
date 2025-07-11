@@ -1,6 +1,13 @@
 <?php
 session_start();
+require_once __DIR__ . '/../models/ServiceModel.php';
+require_once __DIR__ . '/../models/ProcessBooking.php';
+$serviceModel = new ServiceModel();
+$services = $serviceModel->getAllServices();
 ?>
+<?php if (!empty($successMessage)): ?>
+    <p style="color: green; font-weight: bold;"><?= htmlspecialchars($successMessage) ?></p>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -51,7 +58,6 @@ session_start();
     </div>
   </header>
 
-
   <div class="booking-container">
     <div class="booking-banner">
       <h1>Đặt Lịch Dễ Dàng</h1>
@@ -59,6 +65,9 @@ session_start();
     </div>
     <div class="booking-form">
       <h2>Đặt Lịch Rửa Xe</h2>
+      <?php if (!empty($successMessage)): ?>
+          <p style="color: green; font-weight: bold;"><?= htmlspecialchars($successMessage) ?></p>
+      <?php endif; ?>
       <form method="POST">
         <input type="text" name="name" placeholder="Họ và Tên" required>
         <input type="tel" name="phone" placeholder="Số Điện Thoại" required>
@@ -68,24 +77,13 @@ session_start();
 
         <div class="service-options">
           <p><strong>Dịch vụ:</strong></p>
-          <label>
-            <input type="checkbox" name="services[]" value="1" data-price="100000">
-            Rửa Xe Cơ Bản - 100,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="2" data-price="200000">
-            Vệ Sinh Nội Thất - 200,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="3" data-price="300000">
-            Vệ Sinh Khoang Động Cơ - 300,000₫
-          </label>
-          <label>
-            <input type="checkbox" name="services[]" value="4" data-price="500000">
-            Bảo Dưỡng Cao Cấp - 500,000₫
-          </label>
+          <?php foreach ($services as $service): ?>
+            <label>
+              <input type="checkbox" name="services[]" value="<?= $service['id'] ?>" data-price="<?= $service['price'] ?>">
+              <?= htmlspecialchars($service['name_services']) ?> - <?= number_format($service['price'], 0, ',', '.') ?>₫
+            </label>
+          <?php endforeach; ?>
         </div>
-
 
         <p>Tổng tiền: <span id="total">0</span> ₫</p>
 
@@ -94,7 +92,6 @@ session_start();
       </form>
     </div>
   </div>
-
 
   <!-- Footer -->
   <footer>
@@ -137,7 +134,23 @@ session_start();
             document.addEventListener("click", () => {
                 dropdown.style.display = "none";
             });
+
+            // Script tính tổng tiền
+            const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]');
+            const totalElement = document.getElementById('total');
+
+            serviceCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    let total = 0;
+                    serviceCheckboxes.forEach(cb => {
+                        if (cb.checked) {
+                            total += parseFloat(cb.getAttribute('data-price'));
+                        }
+                    });
+                    totalElement.textContent = total.toLocaleString('vi-VN');
+                });
+            });
         });
-    </script>
+  </script>
 </body>
 </html>

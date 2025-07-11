@@ -18,22 +18,25 @@ class BookingModel {
         string $address,
         string $email,
         string $bookings_date,
+        string $phone,
         float $total_price,
         string $note,
         array $serviceIds = []
     ): int|false {
         try {
             // 1. Insert booking
-            $sql = "INSERT INTO bookings (user_id, address, bookings_date, total_price, status, note, email)
-                    VALUES (:user_id, :address, :bookings_date, :total_price, 'ĐANG CHỜ XỬ LÝ', :note, :email)";
+            $sql = "INSERT INTO bookings (user_id, address, bookings_date, phone, total_price, status, note, email)
+                    VALUES (:user_id, :address, :bookings_date, :phone, :total_price, 'ĐANG CHỜ XỬ LÝ', :note, :email)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
             $stmt->bindParam(":address", $address);
             $stmt->bindParam(":bookings_date", $bookings_date);
+            $stmt->bindParam(":phone", $phone);
             $stmt->bindParam(":total_price", $total_price);
             $stmt->bindParam(":note", $note);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
+
             $bookingId = (int)$this->conn->lastInsertId();
 
             // 2. Insert dịch vụ liên quan
@@ -44,7 +47,7 @@ class BookingModel {
                 $stmtPrice->execute();
                 $price = $stmtPrice->fetchColumn();
                 if ($price !== false) {
-                    $sqlService = "INSERT INTO bookings_services (bookings_id, services_id, price_at_booking)
+                    $sqlService = "INSERT INTO bookings_services (bookings_id, services_id, services_price)
                                    VALUES (:bookingId, :serviceId, :price)";
                     $stmtService = $this->conn->prepare($sqlService);
                     $stmtService->bindParam(":bookingId", $bookingId, PDO::PARAM_INT);

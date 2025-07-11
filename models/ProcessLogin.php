@@ -2,23 +2,33 @@
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../models/UserModel.php';
 
-// Bắt đầu session để lưu thông tin user khi login
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"] ?? '';
     $password = $_POST["password"] ?? '';
+    $isManager = isset($_POST["is_manager"]); // kiểm tra checkbox
 
     $userModel = new UserModel();
     $user = $userModel->login($username, $password);
 
     if ($user) {
-        // Đăng nhập thành công, lưu thông tin user vào session
-        $_SESSION["user"] = $user;
-
-        // Có thể chuyển hướng sang trang home, profile hoặc dashboard
-        header("Location:../views/home.php");
-        exit;
+        if ($isManager) {
+            // Nếu tick quản lí, kiểm tra role
+            if ($user["role"] === "admin") {
+                $_SESSION["user"] = $user;
+                header("Location: ../views/admin/dashboard.php");
+                exit;
+            } else {
+                echo "<script>alert('Bạn không có quyền quản lí!'); window.history.back();</script>";
+                exit;
+            }
+        } else {
+            // Không phải quản lí => login bình thường
+            $_SESSION["user"] = $user;
+            header("Location: ../views/home.php");
+            exit;
+        }
     } else {
         echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!'); window.history.back();</script>";
         exit;

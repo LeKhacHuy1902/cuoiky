@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS services (   
     id INT AUTO_INCREMENT PRIMARY KEY,
     name_services VARCHAR(500) NOT NULL,
-    description TEXT,
     price DECIMAL(10,2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -71,3 +70,12 @@ CREATE TABLE IF NOT EXISTS rate (
     FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE
 );
 
+INSERT INTO services (name_services, price) VALUES
+('Rửa Xe Cơ Bản', 100000),
+('Vệ Sinh Nội Thất', 200000),
+('Vệ Sinh Khoang Động Cơ', 300000),
+('Bảo Dưỡng Cao Cấp', 500000),
+('Sửa chữa theo yêu cầu (Giá sẽ tùy thuộc vào phụ tùng hoặc yêu cầu của khách)', 0);
+
+INSERT INTO users (username, password, email, full_name, phone, role) VALUES
+('admin01', '$2y$10$T7hg8VSDCudFw7btJsP16e0mcpskpxB/LxTz6L/X6LNU/LvDCGYtS', 'admin01@gmail.com', 'Admin User', '0123456789', 'admin');
