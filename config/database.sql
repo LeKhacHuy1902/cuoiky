@@ -71,6 +71,3 @@ CREATE TABLE IF NOT EXISTS rate (
     FOREIGN KEY (bookings_id) REFERENCES bookings(id) ON DELETE CASCADE
 );
 
-
-
-

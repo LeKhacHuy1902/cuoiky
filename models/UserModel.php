@@ -42,9 +42,9 @@ class UserModel {
             $stmt->execute();             
             $user = $stmt->fetch(PDO::FETCH_ASSOC);             
 
-            if ($user && password_verify($password, $user['password_hash'])) {                 
-                return $user;             
-            }             
+            if ($user && password_verify($password, $user['password'])) {
+                return $user;
+            }           
             return false;         
         } catch (PDOException $e) {             
             error_log("Login error: " . $e->getMessage());             

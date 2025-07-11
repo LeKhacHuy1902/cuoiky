@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["user"] = $user;
 
         // Có thể chuyển hướng sang trang home, profile hoặc dashboard
-        header("Location:../index.php");
+        header("Location:../views/home.php");
         exit;
     } else {
         echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!'); window.history.back();</script>";
