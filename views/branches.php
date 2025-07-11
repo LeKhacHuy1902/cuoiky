@@ -41,9 +41,13 @@ session_start();
             }
             ?>
           </span>
-
         </div>
-        <div class="dropdown" id="profile-dropdown">
+            <div class="dropdown" id="profile-dropdown">
+                <ul>
+                    <li><a href="profile.php">Hồ sơ</a></li>
+                    <li><a href="../index.php">Đăng xuất</a></li>
+                </ul>
+            </div>
         </div>
       </li>
       </ul>
@@ -114,5 +118,21 @@ session_start();
         <img src="../assets/images/zalo-logo.png" alt="Zalo"> Zalo Chat
       </a>
     </div>
+    <!-- event hồ sơ -->
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("profile-btn");
+      const dropdown = document.getElementById("profile-dropdown");
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", () => {
+        dropdown.style.display = "none";
+      });
+    });
+  </script>
 </body>
 </html>
