@@ -75,6 +75,7 @@ $bookings = $bookingModel->getUserBookings($userId);
                 <div class="service">
                     <div class="service-info">
                         <h2><?= htmlspecialchars($booking['address']) ?></h2>
+                        <p><i class="fas fa-receipt"></i> Mã đơn: <?= htmlspecialchars($booking['id']) ?></p>
                         <p><i class="fas fa-user"></i> Người đặt: <?= htmlspecialchars($booking['full_name']) ?></p>
                         <p><i class="fas fa-calendar-alt"></i> Ngày: <?= htmlspecialchars(date('d/m/Y', strtotime($booking['bookings_date']))) ?></p>
                         <p><i class="fas fa-phone"></i> SĐT: <?= htmlspecialchars($booking['phone']) ?></p>
@@ -116,6 +117,9 @@ $bookings = $bookingModel->getUserBookings($userId);
             </a>
         </div>
     </div>
+    <section>
+        &copy; 2025 <a href="https://lekhachuy1902.github.io/Digital-CV/">Car Wash & Repair Admin . Mọi quyền được bảo lưu.</a>
+    </section>
 </footer>
 
 <div class="floating-buttons">

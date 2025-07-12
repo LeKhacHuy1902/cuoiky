@@ -38,7 +38,7 @@
             letter-spacing: 5px;
         }
 
-        .submit-btn {
+        .submit-btn, .resend-btn {
             background: #007bff;
             color: white;
             padding: 12px;
@@ -48,9 +48,10 @@
             font-size: 16px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 10px;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover, .resend-btn:hover {
             background: #0056b3;
         }
 
@@ -69,6 +70,11 @@
             <input type="text" name="otp" class="otp-input" maxlength="6" placeholder="Nhập mã OTP" required>
             <button type="submit" class="submit-btn">Xác nhận</button>
         </form>
+
+        <form action="../models/ProcessResendOtp.php" method="POST">
+            <button type="submit" class="resend-btn">Gửi lại mã OTP</button>
+        </form>
+
         <div class="note">
             Vui lòng kiểm tra email hoặc tin nhắn để lấy mã OTP.
         </div>

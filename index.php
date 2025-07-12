@@ -325,6 +325,9 @@
             </a>
         </div>
      </div>
+     <section>
+        &copy; 2025 <a href="https://lekhachuy1902.github.io/Digital-CV/">Car Wash & Repair Admin . Mọi quyền được bảo lưu.</a>
+    </section>
     </footer>
 
 

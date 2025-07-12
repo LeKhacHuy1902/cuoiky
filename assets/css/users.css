@@ -23,6 +23,48 @@ h1 {
     font-size: 2em;
 }
 
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: #ffa500;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #ff8000;
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+    text-align: right;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    width: 300px;
+    max-width: 90%;
+    background: #fff;
+    color: #000;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 8px #ffa500;
+    transform: scale(1.02);
+}
+
+/* Bảng */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -38,6 +80,9 @@ table th, table td {
     padding: 12px 15px;
     text-align: left;
 }
+table td:last-child {
+    text-align: center;
+}
 
 table th {
     background: #222;
@@ -49,6 +94,7 @@ table tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* Nút */
 button {
     background: #ffa500;
     color: #000;
@@ -63,19 +109,4 @@ button {
 button:hover {
     background: #ff8000;
     transform: scale(1.05);
-}
-.back-btn {
-    display: inline-block;
-    margin-bottom: 20px;
-    background: #ffa500;
-    color: #000;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.back-btn:hover {
-    background: #ff8000;
 }
